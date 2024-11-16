@@ -12,7 +12,7 @@
             <?php
             echo \hail812\adminlte\widgets\Menu::widget([
                 'items' => [
-                    ['label' => 'Documents', 'url' => ['site/index'], 'iconStyle' => 'far'],
+                    ['label' => 'Documents', 'url' => ['documents/index'], 'iconStyle' => 'far'],
                 ],
             ]);
             ?>

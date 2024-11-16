@@ -48,5 +48,13 @@ return [
         ],
         
     ],
+    'modules' => [
+        
+        'gii' => [
+            'class' => 'yii\gii\Module',
+            'allowedIPs' => ['*']
+        ]
+    ],
+    
     'params' => $params,
 ];
