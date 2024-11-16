@@ -49,4 +49,13 @@ return array (
     ),
     'bootstrap' => 'yii\\bootstrap5\\i18n\\TranslationBootstrap',
   ),
+  'codemix/yii2-localeurls' => 
+  array (
+    'name' => 'codemix/yii2-localeurls',
+    'version' => '1.8.1.0',
+    'alias' => 
+    array (
+      '@codemix/localeurls' => $vendorDir . '/codemix/yii2-localeurls',
+    ),
+  ),
 );

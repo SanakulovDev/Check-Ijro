@@ -18,6 +18,8 @@ class m230116_000003_create_signatures_table extends Migration
             'valid_from' => $this->date(),
             'valid_until' => $this->date(),
             'qr_code' => $this->text(),
+            'created_at'    =>  $this->timestamp()->defaultExpression('CURRENT_TIMESTAMP'),
+            'updated_at'    =>  $this->timestamp()->defaultExpression('CURRENT_TIMESTAMP'),
         ]);
 
         // Foreign key for document_id

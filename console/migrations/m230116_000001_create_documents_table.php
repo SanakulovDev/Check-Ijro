@@ -17,6 +17,9 @@ class m230116_000001_create_documents_table extends Migration
             'subject' => $this->text()->notNull(),
             'decision_date' => $this->date(),
             'main_basis' => $this->text(),
+            'created_at'    =>  $this->timestamp()->defaultExpression('CURRENT_TIMESTAMP'),
+            'updated_at'    =>  $this->timestamp()->defaultExpression('CURRENT_TIMESTAMP'),
+
         ]);
     }
 

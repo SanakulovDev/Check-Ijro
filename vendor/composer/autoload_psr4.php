@@ -15,6 +15,7 @@ return array(
     'yii\\' => array($vendorDir . '/yiisoft/yii2'),
     'frontend\\tests\\' => array($baseDir . '/frontend/tests', $baseDir . '/frontend/tests/_support'),
     'common\\tests\\' => array($baseDir . '/common/tests', $baseDir . '/common/tests/_support'),
+    'codemix\\localeurls\\' => array($vendorDir . '/codemix/yii2-localeurls'),
     'cebe\\markdown\\' => array($vendorDir . '/cebe/markdown'),
     'backend\\tests\\' => array($baseDir . '/backend/tests', $baseDir . '/backend/tests/_support'),
     'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),

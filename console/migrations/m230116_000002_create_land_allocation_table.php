@@ -16,6 +16,8 @@ class m230116_000002_create_land_allocation_table extends Migration
             'address' => $this->text()->notNull(),
             'area_sqm' => $this->integer()->notNull(),
             'justification' => $this->text(),
+            'created_at'    =>  $this->timestamp()->defaultExpression('CURRENT_TIMESTAMP'),
+            'updated_at'    =>  $this->timestamp()->defaultExpression('CURRENT_TIMESTAMP'),
         ]);
 
         // Foreign key for document_id

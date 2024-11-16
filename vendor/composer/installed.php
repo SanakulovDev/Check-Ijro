@@ -3,7 +3,7 @@
         'name' => 'yiisoft/yii2-app-advanced',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '975f298a7e6183bb56250df0a3135595d8aaf046',
+        'reference' => '8a5d5a67fa7bfb86274d973822891dd55954f06a',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -159,6 +159,15 @@
             'install_path' => __DIR__ . '/../codeception/verify',
             'aliases' => array(),
             'dev_requirement' => true,
+        ),
+        'codemix/yii2-localeurls' => array(
+            'pretty_version' => '1.8.1',
+            'version' => '1.8.1.0',
+            'reference' => '3f360b9f3bba76e607dcdef86000d3033b214387',
+            'type' => 'yii2-extension',
+            'install_path' => __DIR__ . '/../codemix/yii2-localeurls',
+            'aliases' => array(),
+            'dev_requirement' => false,
         ),
         'doctrine/instantiator' => array(
             'pretty_version' => '2.0.0',
@@ -760,7 +769,7 @@
         'yiisoft/yii2-app-advanced' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '975f298a7e6183bb56250df0a3135595d8aaf046',
+            'reference' => '8a5d5a67fa7bfb86274d973822891dd55954f06a',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
