@@ -2,9 +2,11 @@
 
 namespace backend\controllers;
 
+use Yii;
 use common\models\DocumentDetails;
 use common\models\Documents;
 use common\models\DocumentsSearch;
+use PhpParser\Node\Stmt\Return_;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -23,7 +25,7 @@ class DocumentsController extends Controller
             parent::behaviors(),
             [
                 'verbs' => [
-                    'class' => VerbFilter::className(),
+                    'class' => VerbFilter::class,
                     'actions' => [
                         'delete' => ['POST'],
                     ],
@@ -70,9 +72,23 @@ class DocumentsController extends Controller
     {
         $model = new Documents();
         $modelDetails   =   new DocumentDetails();
-        if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+        if (Yii::$app->request->isPost) {
+            $transaction = Yii::$app->db->beginTransaction();
+            try {
+                if ($model->load($this->request->post())) {
+                    if($model->save(false))
+                    if($modelDetails->load(Yii::$app->request->post())){
+                        $modelDetails->document_id  =   $model->id;
+                        if($modelDetails->save()){
+                            Yii::$app->session->setFlash('success', 'Insert successfully');
+                            return $this->redirect(['index']);
+                        }
+                    }
+                }
+            }catch(\Exception $e){
+                $transaction->rollBack();
+                Yii::$app->session->setFlash('error', 'Insert failed');
+
             }
         } else {
             $model->loadDefaultValues();
@@ -80,6 +96,7 @@ class DocumentsController extends Controller
 
         return $this->render('create', [
             'model' => $model,
+            'modelDetails' => $modelDetails,
         ]);
     }
 
@@ -93,13 +110,30 @@ class DocumentsController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $modelDetails   =   DocumentDetails::find()->where(['document_id'   =>  $model->id])->one();
+        if ($this->request->isPost) {
+            $transaction = Yii::$app->db->beginTransaction();
+            try {
+                if ($model->load($this->request->post())) {
+                    if($model->save(false))
+                    if($modelDetails->load(Yii::$app->request->post())){
+                        $modelDetails->document_id  =   $model->id;
+                        if($modelDetails->save()){
+                            Yii::$app->session->setFlash('success', 'Insert successfully');
+                            return $this->redirect(['index']);
+                        }
+                    }
+                }
+            }catch(\Exception $e){
+                $transaction->rollBack();
+                Yii::$app->session->setFlash('error', 'Insert failed');
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            }
         }
 
-        return $this->render('update', [
+        return $this->render('create', [
             'model' => $model,
+            'modelDetails' => $modelDetails,
         ]);
     }
 
