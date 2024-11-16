@@ -1,0 +1,40 @@
+version: '3.2'
+
+services:
+
+  frontend:
+    build: frontend
+    container_name: checkIjroFront
+    ports:
+      - 30080:80
+    volumes:
+      # Re-use local composer cache via host-volume
+      - ~/.composer-docker/cache:/root/.composer/cache:delegated
+      # Mount source-code for development
+      - ./:/app
+
+  backend:
+    build: backend
+    container_name: checkIjroBack
+    ports:
+      - 31080:80
+    volumes:
+      # Re-use local composer cache via host-volume
+      - ~/.composer-docker/cache:/root/.composer/cache:delegated
+      # Mount source-code for development
+      - ./:/app
+
+  postgres:
+    image: postgres:16
+    container_name: checkIjroDb
+    ports:
+      - 6666:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: check_ijro
+      POSTGRES_DB: check_ijro_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+volumes:
+  postgres_data:
+  
