@@ -13,7 +13,15 @@ return [
     'bootstrap' => ['log'],
     'modules' => [],
     'components' => [
+        'view' => [
+            'theme' => [
+                'pathMap' => [
+                    '@app/views' => '@vendor/hail812/yii2-adminlte3/src/views'
+                ],
+            ],
+        ],
         'request' => [
+            'baseUrl'=>'',
             'csrfParam' => '_csrf-backend',
         ],
         'user' => [
@@ -37,14 +45,14 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
+        
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
             ],
         ],
-        */
+        
     ],
     'params' => $params,
 ];
