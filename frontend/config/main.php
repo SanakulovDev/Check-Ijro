@@ -14,7 +14,7 @@ return [
     'homeUrl' => '/documents',
     'components' => [
         'request' => [
-            'baseUrl'   =>  '',
+            'baseUrl' => '',
             'csrfParam' => '_csrf-frontend',
         ],
         'user' => [

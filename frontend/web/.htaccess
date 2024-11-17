@@ -1,4 +1,7 @@
-RewriteEngine on
+
+RewriteEngine On
+
+# Yii2 uchun umumiy yo'naltirish
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . index.php
+RewriteRule . index.php [L]
