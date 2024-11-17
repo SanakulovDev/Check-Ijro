@@ -96,7 +96,9 @@ $validity_period_end = date("d", strtotime($model->validity_period_end)) . ' ' .
                     <div mattooltip="Кўчириб олиш" class="mat-tooltip-trigger flex items-center leading-5 text-md text-secondary cursor-pointer" aria-describedby="cdk-describedby-message-0" cdk-describedby-host=""><mat-icon role="img" class="mat-icon notranslate icon-size-6 text-secondary mat-icon-no-color" aria-hidden="true" data-mat-icon-type="svg" data-mat-icon-name="document-text" data-mat-icon-namespace="heroicons_outline"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" fit="" height="100%" width="100%" preserveAspectRatio="xMidYMid meet" focusable="false">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                             </svg></mat-icon>
-                        <div class="ml-1.5"> NE21782624.pdf </div>
+                        <div class="ml-1.5"> 
+                            <a style="font-style: italic;" target="_blank" href="<?= $pdfUrl?>"><?=$model->document_code?>.pdf</a>    
+                        </div>
                     </div><!---->
                 </div>
 
