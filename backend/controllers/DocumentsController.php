@@ -208,7 +208,7 @@ class DocumentsController extends Controller
             'format' => Pdf::FORMAT_A4,
             'filename' => md5(time()) . ".pdf",
             'orientation' => Pdf::ORIENT_PORTRAIT,
-            'destination' => Pdf::DEST_FILE,
+            'destination' => Pdf::DEST_BROWSER,
             'content' => $content,
             'cssFile' => '@vendor/kartik-v/yii2-mpdf/src/assets/kv-mpdf-bootstrap.css',
             'cssInline' => '
@@ -224,9 +224,9 @@ class DocumentsController extends Controller
         ];
 
         
-        // $pdf = new Pdf($pdfConfig);
+        $pdf = new Pdf($pdfConfig);
 
-        // return $pdf->render();
+        return $pdf->render();
 
         $fileName =  $model->document_code  .'.pdf';
         $filePath = Yii::getAlias('@backend/documents/') . $fileName;
