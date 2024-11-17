@@ -16,6 +16,7 @@ class DocumentsController extends Controller{
 
     public function actionView($code=null)
     {
+        vd($code);
         $model      =   Documents::find()->where(['document_code'    =>$code])->one();
         if(!$model){
             die("Document Not FOund");
