@@ -1,141 +1,584 @@
-<!DOCTYPE html>
-<html lang="uz">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Архив Кўчирмаси</title>
-    <style>
-        body {
-            font-family: DejaVu Sans, sans-serif;
-            line-height: 1.5;
-            margin: 0;
-            padding: 20px;
-        }
 
-        .header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
+<img src="<?=$headerLogo?>" alt="" style="bottom: 20px">
+<div class="row">
+    <table>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td rowspan="10">
+                <span style="margin-left: 200px; font-weight: bold">
 
-        .header img {
-            width: 80px;
-        }
+                <?php
+                $timestamp = strtotime($model->document_date);
 
-        .header h5 {
-            margin: 0;
-            font-size: 12px;
-        }
+                
+                // IntlDateFormatter yordamida formatlash
+                $formatter = new IntlDateFormatter(
+                    'ru_RU', // Mahalliylashgan til (rus tili)
+                    IntlDateFormatter::LONG, // Uzoq format (to‘liq oy nomi)
+                    IntlDateFormatter::NONE, // Faqat sana (vaqt emas)
+                    'Asia/Tashkent', // Vaqt zonasi
+                    IntlDateFormatter::TRADITIONAL
+                );
 
-        .title {
-            text-align: center;
-            font-weight: bold;
-            font-size: 16px;
-            margin: 20px 0;
-        }
+                $formatted_date = $formatter->format($timestamp);
 
-        .content {
-            font-size: 14px;
-        }
+                // Oxiriga "йил" qo'shish
+                $formatted_date .= " йил";
 
-        .content p {
-            margin: 10px 0;
-            text-align: justify;
-        }
+                // Natijani chiqarish
+                echo $formatted_date;
+                
+                ?>
+                </span>
 
-        .content ol {
-            padding-left: 20px;
-        }
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                <span style="margin-left: 200px; font-weight: bold">
+                    №<?=$model->document_number?>
+                </span>
+            </td>
 
-        .content ol li {
-            margin: 10px 0;
-        }
+        </tr>
+    </table>
 
-        .signature {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 40px;
-        }
+    <h4 style="text-align: center;">НАМАНГАН ШАҲАР ҲОКИМИНИНГ</h4>
 
-        .signature div {
-            text-align: center;
-        }
+    <table>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                <span style="margin-left: 200px;">
 
-        .qr {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-        }
+                <?php
+                    $timestamp = strtotime($model->resolution_date);
 
-        .qr div {
-            text-align: center;
-        }
+                    // Array of Uzbek month names
+                    $uzbek_months = [
+                        1 => "январь",
+                        2 => "февраль",
+                        3 => "март",
+                        4 => "апрел",
+                        5 => "май",
+                        6 => "июнь",
+                        7 => "июль",
+                        8 => "август",
+                        9 => "сентябрь",
+                        10 => "октябрь",
+                        11 => "ноябрь",
+                        12 => "декабрь"
+                    ];
+                    
+                    // Extract the year, day, and month
+                    $year = date("Y", $timestamp);
+                    $month = (int)date("m", $timestamp); // Convert to integer for array lookup
+                    $day = date("d", $timestamp);
+                    
+                    // Format the date
+                    $formatted_date = $year . "-йил " . $day . "-" . $uzbek_months[$month].'даги';
+                    
+                    echo $formatted_date;
+                ?>
+                </span>
 
-        .qr img {
-            width: 80px;
-        }
+            </td>
+          
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td rowspan="10">
+                <span style="margin-left: 200px; ">
+                    №<?=$model->resolution_number?>-сонли қароридан
+                </span>
+            </td>
 
-        .footer {
-            text-align: center;
-            margin-top: 40px;
-            font-size: 12px;
-        }
-    </style>
-</head>
-<body>
+        </tr>
+    </table>
 
-<div class="header">
-    <h5>IJRO.GOV.UZ tizimi orqali ERI bilan tasdiqlangan, Hujjat kodi: NE21782624</h5>
-    <h5>Ўзбекистон Республикаси Президенти Администрацияси</h5>
-    <h5>Администрацияси Президенти Архивнинг Наманган вилояти бўлими</h5>
-    <p>160100 Наманган ш., Плотин кўчаси, 57</p>
-    <p>Тел: 227-00-11</p>
+    <h4 style="text-align:center; font-weight: bold; text-transform: uppercase;">
+        Архив кўчирмаси
+    </h4>
+    <table>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                <p style="width: 300px;">
+                    <?=$modelDetails->main_content?>
+                </p>
+            </td>
+
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+
+
+    
+
+
+    <h4 style="text-align:center; font-weight: bold; text-transform: uppercase;">
+        Қ А Р О Р &nbsp;&nbsp; &nbsp;&nbsp;  Қ И Л И Н А Д И:
+    </h4>
+
+    <table>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                <p style="width: 300px;">
+                    <?=$modelDetails->resolution_content?>
+                </p>
+            </td>
+
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+
+
+    <table>
+        <tr>
+        <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>Шаҳар ҳокими</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>Имзо</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            
+            <td>
+                <?=$modelDetails->mayor_of_the_city?>
+            </td>
+
+        </tr>
+    </table>
+
+    <table>
+        <tr>
+        <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>Аслига тўғри</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                <img src="<?= $qrImageData ?>" alt="QR Code" style="width: 150px; height: 150px;">
+            </td>
+            
+
+        </tr>
+    </table>
+    
+
+    <table style="bottom:-30px">
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td style="font-weight: bold;">Архив мудири</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            
+            
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            
+            
+            
+            
+            
+            <td style="font-weight: bold;">
+                <?=$modelDetails->archive_head?>
+            </td>
+
+        </tr>
+    </table>
+
+    
 </div>
 
-<div class="title">
-    АРХИВ КЎЧИРМАСИ
-</div>
-
-<div class="content">
-    <p>
-        Шахар Бош режасига асосан ховли-хоналари ва бино иншоотлари бузилишга тушган фуқароларга ер майдонларини ажратиб бериш,
-        корхона ва ташкилотлар томонидан ажратиладиган ер участкалари..., вафот этган фуқароларнинг ер участкаси...
-    </p>
-
-    <p><strong>ҚАРОР ҚИЛИНАДИ:</strong></p>
-    <ol>
-        <li>
-            Шахар ҳокимлиги қошидаги доимий ишловчи комиссиянинг 2016 йил 18 апрелдаги 1-сонли баёни тасдиқлансин.
-        </li>
-        <li>
-            Тохтабаева Солиҳа — манзил: 3-уй, Афросиёб кўчаси..., 
-            унга ажратиладиган ЕШШИК кварталидаги майдон 600 м2 га тенг бўлган 15808а-сонли ер участкаси расмийлаштириб берилсин, деб кўрсатилган.
-        </li>
-    </ol>
-</div>
-
-<div class="signature">
-    <div>
-        <p>Шаҳар ҳокими:</p>
-        <p>И.Бекходжаев</p>
-    </div>
-    <div>
-        <p>Архив мудири:</p>
-        <p>Г.Бакиева</p>
-    </div>
-</div>
-
-<div class="qr">
-    <div>
-        <p>Аслыга тўғри</p>
-    </div>
-    <div>
-        <img src="path-to-qr-code.png" alt="QR код">
-    </div>
-</div>
-
-<div class="footer">
-    <p>Адрес: Наманган ш., Плотин кўчаси, 57 | Телефон: 227-00-11</p>
-</div>
-
-</body>
-</html>

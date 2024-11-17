@@ -14,5 +14,13 @@ $config = yii\helpers\ArrayHelper::merge(
     require __DIR__ . '/../config/main.php',
     require __DIR__ . '/../config/main-local.php'
 );
-
+function vd($var, $exit = true)
+{
+    $dumper = new yii\helpers\BaseVarDumper();
+    echo $dumper::dump($var, 10, true);
+    if ($exit) {
+        exit;
+    
+    }
+}
 (new yii\web\Application($config))->run();

@@ -103,3 +103,4 @@ $validity_period_end = date("d", strtotime($model->validity_period_end)) . ' ' .
             </div>
         </div>
     </div>
+</div>

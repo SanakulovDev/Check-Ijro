@@ -55,7 +55,7 @@ AppAsset::register($this);
                             </svg></mat-icon></span><span matripple="" class="mat-ripple mat-button-ripple mat-button-ripple-round"></span><span class="mat-button-focus-overlay"></span></button><!----><!----><!----><!----><!----><!----><!----><!----></search>
         </div>
     </div>
-
+    
     <main role="main" class="flex-shrink-0 bg-light">
             <?= $content ?>
     </main>
