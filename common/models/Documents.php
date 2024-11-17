@@ -38,7 +38,7 @@ class Documents extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['document_code', 'document_date', 'resolution_date'], 'required'],
+            [['document_code', 'document_date', 'resolution_date', 'document_number'], 'required'],
             [['document_date', 'resolution_date', 'validity_period_start', 'validity_period_end', 'created_at', 'updated_at'], 'safe'],
             [['document_code', 'resolution_number'], 'string', 'max' => 50],
             [['issuer_name', 'executor_name', 'signing_organization', 'file_path'], 'string', 'max' => 255],

@@ -18,15 +18,10 @@ use yii\widgets\ActiveForm;
             <?= $form->field($model, 'document_code')->textInput(['maxlength' => true]) ?>
         </div>
         <div class="col-md-2">
-            <?= $form->field($model, 'document_date')->widget(DatePicker::class, [
-                'pluginOptions' => [
-                    'format' => 'yyyy-mm-dd',
-                    'todayHighlight' => true
-                ]
-            ]) ?>
+            <?= $form->field($model, 'document_number')->textInput(['maxlength' => true]) ?>
         </div>
         <div class="col-md-2">
-            <?= $form->field($model, 'resolution_date')->widget(DatePicker::class, [
+            <?= $form->field($model, 'document_date')->widget(DatePicker::class, [
                 'pluginOptions' => [
                     'format' => 'yyyy-mm-dd',
                     'todayHighlight' => true
@@ -36,6 +31,15 @@ use yii\widgets\ActiveForm;
         <div class="col-md-2">
             <?= $form->field($model, 'resolution_number')->textInput(['maxlength' => true]) ?>
         </div>
+        <div class="col-md-2">
+            <?= $form->field($model, 'resolution_date')->widget(DatePicker::class, [
+                'pluginOptions' => [
+                    'format' => 'yyyy-mm-dd',
+                    'todayHighlight' => true
+                ]
+            ]) ?>
+        </div>
+       
         <div class="col-md-2">
             <?= $form->field($model, 'issuer_name')->textInput(['maxlength' => true]) ?>
         </div>
