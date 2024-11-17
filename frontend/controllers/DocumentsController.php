@@ -40,7 +40,7 @@ class DocumentsController extends Controller{
         if (!$modelDetails) {
             throw new NotFoundHttpException(Yii::t('app', 'Document details not found.'));
         }
-        $link = Url::base(true).'/d/'.$model->document_code;
+        $link = Url::base(true).'/documents/view?code='.$model->document_code;
         $qrResult = Builder::create()
         ->data($link)
         ->encoding(new Encoding('UTF-8'))
