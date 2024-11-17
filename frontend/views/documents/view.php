@@ -7,3 +7,4 @@
         <?= $this->render('sidebar.php', ['model'   =>  $model]);?>
     </div>
 </div>
+
