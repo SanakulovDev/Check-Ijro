@@ -38,10 +38,10 @@ class Documents extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['document_code', 'document_date', 'resolution_date'], 'required'],
+            [['document_code', 'document_date', 'resolution_date', 'document_number'], 'required'],
             [['document_date', 'resolution_date', 'validity_period_start', 'validity_period_end', 'created_at', 'updated_at'], 'safe'],
             [['document_code', 'resolution_number'], 'string', 'max' => 50],
-            [['issuer_name', 'executor_name', 'signing_organization'], 'string', 'max' => 255],
+            [['issuer_name', 'executor_name', 'signing_organization', 'file_path'], 'string', 'max' => 255],
         ];
     }
 
@@ -63,6 +63,7 @@ class Documents extends \yii\db\ActiveRecord
             'validity_period_end' => Yii::t('app', 'Validity Period End'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
+            'file_path' => Yii::t('app', 'File Path'),
         ];
     }
 

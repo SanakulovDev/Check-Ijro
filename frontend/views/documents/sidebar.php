@@ -1,6 +1,34 @@
 <?php $fontSize1 = "1.25rem";
 $fontSize2 = "0.78rem";
 
+$timestamp = strtotime($model->resolution_date);
+
+$uzbek_months = [
+    1 => "январь",
+    2 => "февраль",
+    3 => "март",
+    4 => "апрел",
+    5 => "май",
+    6 => "июнь",
+    7 => "июль",
+    8 => "август",
+    9 => "сентябрь",
+    10 => "октябрь",
+    11 => "ноябрь",
+    12 => "декабрь"
+];
+
+$year = date("Y", $timestamp);
+$month = (int)date("m", $timestamp);
+$day = date("d", $timestamp);
+
+$resolution_date = $year . "-йил " . $day . "-" . $uzbek_months[$month] . 'даги';
+
+$document_date = date("d", strtotime($model->document_date)) . ' ' . $uzbek_months[(int)date("m", strtotime($model->document_date))] . ' ' . date("Y", strtotime($model->document_date));
+$validity_period_start = date("d", strtotime($model->validity_period_start)) . ' ' . $uzbek_months[(int)date("m", strtotime($model->validity_period_start))] . ' ' . date("Y", strtotime($model->validity_period_start));
+$validity_period_end = date("d", strtotime($model->validity_period_end)) . ' ' . $uzbek_months[(int)date("m", strtotime($model->validity_period_end))] . ' ' . date("Y", strtotime($model->validity_period_end));
+
+
 ?>
 <div class="sidebar" style="min-height: 100vh; background: white; overflow-x: auto;">
     <div class="">
@@ -8,9 +36,9 @@ $fontSize2 = "0.78rem";
             <div class="col-md-10 ml-1">
 
                 <div class="flex flex-col items-start p-4 border-b ng-tns-c103-1"><!---->
-                    <div class="mt-3 text-2xl font-semibold">NE21782624</div>
-                    <div class="text-secondary">2016 йил 20 апрелдаги 305-сонли</div>
-                    <div class="text-sm">29 окт 2024</div>
+                    <div class="mt-3 text-2xl font-semibold"><?=$model->document_code?></div>
+                    <div class="text-secondary"><?=$resolution_date?> <?=$model->resolution_number?>-сонли</div>
+                    <div class="text-sm"><?=$document_date?></div>
                     <div class="mt-6 flex items-center leading-5 text-md text-secondary ng-star-inserted" style=""><mat-icon role="img" class="mat-icon notranslate icon-size-8 text-secondary mat-icon-no-color" aria-hidden="true" data-mat-icon-type="svg" data-mat-icon-name="mail_send" data-mat-icon-namespace="iconsmind"><svg width="100%" height="100%" viewBox="0 0 36 32" x="952" y="2688" fit="" preserveAspectRatio="xMidYMid meet" focusable="false">
                                 <path d="M8 12.267h-7.467c-0.294 0-0.533-0.239-0.533-0.533s0.239-0.533 0.533-0.533h7.467c0.293 0 0.533 0.239 0.533 0.533s-0.24 0.533-0.533 0.533z"></path>
                                 <path d="M6.933 16.533h-6.4c-0.294 0-0.533-0.239-0.533-0.533s0.239-0.533 0.533-0.533h6.4c0.293 0 0.533 0.239 0.533 0.533s-0.24 0.533-0.533 0.533z"></path>
@@ -30,7 +58,7 @@ $fontSize2 = "0.78rem";
                     <div class="flex items-center leading-5 text-md text-secondary cursor-pointer ng-star-inserted"><mat-icon role="img" class="mat-icon notranslate icon-size-6 text-secondary mat-icon-no-color" aria-hidden="true" data-mat-icon-type="svg" data-mat-icon-name="user-circle" data-mat-icon-namespace="heroicons_outline"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" fit="" height="100%" width="100%" preserveAspectRatio="xMidYMid meet" focusable="false">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                             </svg></mat-icon>
-                        <div class="ml-1.5"> Bakiyeva Gulnaz Kadirjanovna <!----><!----><!----></div>
+                        <div class="ml-1.5"> <?=$model->issuer_name?> <!----><!----><!----></div>
                     </div><!---->
                 </div>
 
@@ -40,7 +68,7 @@ $fontSize2 = "0.78rem";
                     <div class="flex items-center leading-5 text-md text-secondary cursor-pointer"><mat-icon role="img" class="mat-icon notranslate icon-size-6 text-secondary mat-icon-no-color" aria-hidden="true" data-mat-icon-type="svg" data-mat-icon-name="user-circle" data-mat-icon-namespace="heroicons_outline"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" fit="" height="100%" width="100%" preserveAspectRatio="xMidYMid meet" focusable="false">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                             </svg></mat-icon>
-                        <div class="ml-1.5"> Gulnaz Bakiyeva Kadirjanovna </div>
+                        <div class="ml-1.5"> <?= $model->executor_name?> </div>
                     </div>
                 </div>
 
@@ -49,7 +77,7 @@ $fontSize2 = "0.78rem";
                     <div class="flex items-center leading-5 text-md"><mat-icon role="img" class="mat-icon notranslate icon-size-6 text-secondary mat-icon-no-color" aria-hidden="true" data-mat-icon-type="svg" data-mat-icon-name="clipboard-check" data-mat-icon-namespace="heroicons_outline"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" fit="" height="100%" width="100%" preserveAspectRatio="xMidYMid meet" focusable="false">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
                             </svg></mat-icon>
-                        <div class="ml-1.5"> "UNICON-SOFT" MCHJ </div>
+                        <div class="ml-1.5"> <?= $model->signing_organization?> </div>
                     </div>
                 </div>
 
@@ -59,7 +87,7 @@ $fontSize2 = "0.78rem";
                     <div class="flex items-center leading-5 text-md text-secondary"><mat-icon role="img" class="mat-icon notranslate icon-size-6 text-secondary mat-icon-no-color" aria-hidden="true" data-mat-icon-type="svg" data-mat-icon-name="calendar" data-mat-icon-namespace="feather"><svg x="720" y="48" viewBox="0 0 24 24" fit="" height="100%" width="100%" preserveAspectRatio="xMidYMid meet" focusable="false">
                                 <path fill="none" stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="currentColor" d="M5 4h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2zM16 2v4M8 2v4M3 10h18"></path>
                             </svg></mat-icon>
-                        <div class="ml-1.5"> 16 окт 2024 - 16 окт 2026 <!----><!----><!----></div>
+                        <div class="ml-1.5"> <?= $validity_period_start?> - <?=$validity_period_end?> <!----><!----><!----></div>
                     </div>
                 </div>
 
