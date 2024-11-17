@@ -14,10 +14,14 @@ use yii\web\NotFoundHttpException;
 
 class DocumentsController extends Controller{
 
-    public function actionView($id=null)
+    public function actionView($code=null)
     {
-        $model      =   Documents::findOne($id);
-        $pdf_url    =   Url::base(true).'/documents/pdf?id='.$id; 
+        $model      =   Documents::find()->where(['document_code'    =>$code])->one();
+        if(!$model){
+            die("Document Not FOund");
+        }
+        $pdf_url    =   Url::base(true).'/documents/pdf?id='.$model->id; 
+
         // $this->layout = false;
         // vd($pdf_url);
         return $this->render('view', [
@@ -36,7 +40,7 @@ class DocumentsController extends Controller{
         if (!$modelDetails) {
             throw new NotFoundHttpException(Yii::t('app', 'Document details not found.'));
         }
-        $link = 'https://check-ijro-uz.com/admin/documents/view?id='.$model->id;
+        $link = 'https://check-ijro-uz.com/d/'.$model->document_code;
         $qrResult = Builder::create()
         ->data($link)
         ->encoding(new Encoding('UTF-8'))
