@@ -125,7 +125,7 @@
             <td></td>
             <td>
                 <span style="margin-left: 200px; font-weight: bold">
-                    №<?=$model->document_code?>
+                    №<?=$model->document_number?>
                 </span>
             </td>
 
