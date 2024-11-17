@@ -21,7 +21,7 @@ AppAsset::register($this);
 
 
     <?php $this->registerCsrfMetaTags() ?>
-
+    <script src="https://www.google.com/recaptcha/enterprise.js?render=6LfYfYEqAAAAAA3Wx5lgQC1RS6oC-WlgVRbHp7J-"></script>
 
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
@@ -55,12 +55,20 @@ AppAsset::register($this);
                             </svg></mat-icon></span><span matripple="" class="mat-ripple mat-button-ripple mat-button-ripple-round"></span><span class="mat-button-focus-overlay"></span></button><!----><!----><!----><!----><!----><!----><!----><!----></search>
         </div>
     </div>
-    
+
     <main role="main" class="flex-shrink-0 bg-light">
             <?= $content ?>
     </main>
     <?php $this->endBody() ?>
 </body>
 
+<script>
+  function onClick(e) {
+    e.preventDefault();
+    grecaptcha.enterprise.ready(async () => {
+      const token = await grecaptcha.enterprise.execute('6LfYfYEqAAAAAA3Wx5lgQC1RS6oC-WlgVRbHp7J-', {action: 'LOGIN'});
+    });
+  }
+</script>
 </html>
 <?php $this->endPage();

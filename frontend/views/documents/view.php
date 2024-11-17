@@ -3,7 +3,7 @@
 
 ?>
 <div class="row d-flex align-items-center justify-content-between">
-    <div class="col-md-3">
+    <div class="col-md-3 sidebar">
         <?= $this->render('sidebar.php', ['model'   =>  $model]);?>
     </div> 
     <div class="col-md-7 text-right">
