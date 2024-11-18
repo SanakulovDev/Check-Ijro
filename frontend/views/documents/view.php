@@ -57,7 +57,7 @@
         align-items: flex-start; /* Yuqoridan boshlash */
         background-color: #E5EEF9; /* Fon rang */
         overflow-y: auto; /* Scroll qo‘shish */
-        min-height: calc(100vh - 20px); /* Ekran balandligini to‘liq qamrab olish */
+        height: calc(100vh - 20px); /* Ekran balandligini to‘liq qamrab olish */
         padding: 10px; /* Kichik bo‘sh joy */
         box-sizing: border-box; /* Paddingni ichki hisoblash */
     }
