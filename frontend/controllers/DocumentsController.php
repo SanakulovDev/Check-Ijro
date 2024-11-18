@@ -120,7 +120,7 @@ class DocumentsController extends Controller{
     {
         Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
         $recaptcha = Yii::$app->request->post('g-recaptcha-response');
-        $secret = '6LfNm4IqAAAAALVeAQAHqNet7t48YDnAtEvHzq-C'; // O'zingizning secret key'ingizni qo'ying
+        $secret = Yii::$app->params['recatchaSecretKey']; // O'zingizning secret key'ingizni qo'ying
 
         $client = new \yii\httpclient\Client();
         $response = $client->createRequest()
