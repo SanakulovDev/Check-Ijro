@@ -41,18 +41,26 @@
     }
     
 
-    /* PDF konteynerini markazlashtirish uchun uslublar */
     /* PDF konteynerini moslashuvchan qilish */
-    .pdf-container {
+
+    /* .pdf-container {
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: #f8f9fa; /* Orqa fon (optional) */
+        background-color: #f8f9fa;
         overflow: auto;
         max-height: calc(100vh - 20px);
-         /* Ekran balandligini to‘liq olish */
+    } */
+    .pdf-container {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start; /* Yuqoridan boshlash */
+        background-color: #E5EEF9; /* Fon rang */
+        overflow-y: auto; /* Scroll qo‘shish */
+        min-height: calc(100vh - 20px); /* Ekran balandligini to‘liq qamrab olish */
+        padding: 10px; /* Kichik bo‘sh joy */
+        box-sizing: border-box; /* Paddingni ichki hisoblash */
     }
-
     /* Canvasni barcha ekranlar uchun markazlash va responsiv qilish */
     #pdfCanvas {
         max-width: 100%; /* Kenglikni maksimal qilish */
@@ -60,6 +68,7 @@
         margin: auto; /* Markazlashtirish */
         display: block; /* Elementni blok holatiga o'tkazish */
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        margin-top: 0;
     }
 
     /* Mobil ekranlar uchun maxsus moslashtirish */
