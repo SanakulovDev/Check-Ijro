@@ -112,7 +112,7 @@ $isHuman = Yii::$app->session->get('isHuman') || Yii::$app->request->cookies->ge
 <body class="d-flex flex-column h-100 <?= $isHuman ? '' : 'recaptcha-active' ?>">
     <?php $this->beginBody() ?>
     <!-- reCAPTCHA Overlay -->
-    <div id="recaptcha-overlay" style="position: fixed; top: 0; left: 0; width: 90%; height: 90%; background-color: rgba(0,0,0,0.8); z-index: 9999; display: flex; align-items: center; justify-content: center;">
+    <div id="recaptcha-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #ffffff; z-index: 9999; display: flex; align-items: center; justify-content: center;">
         <div id="recaptcha-container">
             <!-- reCAPTCHA vidjeti bu yerda yuklanadi -->
             <div id="recaptcha"></div>
