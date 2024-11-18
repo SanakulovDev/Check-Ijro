@@ -162,7 +162,7 @@ $isHuman = Yii::$app->session->get('isHuman') || Yii::$app->request->cookies->ge
         </div>
     </div>
 
-    <main role="main" class="flex-shrink-0 bg-light">
+    <main role="main" class="flex-shrink-0 " style="background-color: #E5EEF9;">
             <?= $content ?>
     </main>
    
