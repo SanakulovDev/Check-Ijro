@@ -130,7 +130,7 @@ class DocumentsController extends Controller{
             ->send();
 
         if ($response->isOk && $response->data['success']) {
-            // Foydalanuvchini tasdiqlangan deb belgilash (sessiya va cookie)
+            // Foydalanuvchini tasdiqlangan deb belgilash
             Yii::$app->session->set('isHuman', true);
 
             Yii::$app->response->cookies->add(new \yii\web\Cookie([
