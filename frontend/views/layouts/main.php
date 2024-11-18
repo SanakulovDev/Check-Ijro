@@ -18,6 +18,7 @@ AppAsset::register($this);
         
     
         #loader {
+            display: flex;
             position: fixed;
             z-index: 9999;
             top: 0;
@@ -96,24 +97,7 @@ AppAsset::register($this);
 
     <?php $this->registerCsrfMetaTags() ?>
     <script src="https://www.google.com/recaptcha/enterprise.js?render=6LfYfYEqAAAAAA3Wx5lgQC1RS6oC-WlgVRbHp7J-"></script>
-    <?php
-        $this->registerJs(<<<JS
-            $(document).ready(function () {
-                $('#loader').fadeIn(); // Sahifa yuklanayotganda loaderni ko'rsatadi
-                
-                $(window).on('load', function () {
-                    $('#loader').fadeOut(); // Sahifa to'liq yuklanganda loaderni yashiradi
-                });
-
-                $(document).ajaxStart(function () {
-                    $('#loader').fadeIn(); // AJAX so'rov boshida loaderni ko'rsatadi
-                }).ajaxStop(function () {
-                    $('#loader').fadeOut(); // AJAX so'rov tugagach loaderni yashiradi
-                });
-            });
-        JS
-        , \yii\web\View::POS_END); // POS_END — scriptlarni sahifaning oxirida joylashtiradi
-        ?>
+    
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
     
@@ -122,7 +106,7 @@ AppAsset::register($this);
 <body class="d-flex flex-column h-100">
     <?php $this->beginBody() ?>
 
-    <div id="loader" style="display: none;">
+    <div id="loader" style="">
         <div class="loader-container">
             <img src="/img/Emblem_of_Uzbekistan.svg" alt="Logo" class="loader-logo">
             <div class="loader-spinner">
