@@ -1,4 +1,5 @@
 
+<h5 style="color: red">IJRO.GOV.UZ тизими оркали ЭРИ билан тасдикланган, Хужжат коди: <?=$model->document_code?></h5>
 <img src="<?=$headerLogo?>" alt="" style="bottom: 20px">
 <div class="row">
     <table>

@@ -18,6 +18,7 @@ $uzbek_months = [
     12 => "декабрь"
 ];
 
+$greyColor = '';
 $year = date("Y", $timestamp);
 $month = (int)date("m", $timestamp);
 $day = date("d", $timestamp);
@@ -31,7 +32,7 @@ $validity_period_end = date("d", strtotime($model->validity_period_end)) . ' ' .
 
 ?>
 <div id="sidebar" style="min-height: 100vh; ; overflow-x: auto;">
-        <div class="row">
+        <div class="row mt-4">
             <div class="col-md-10 ml-1">
 
                 <div class="flex flex-col items-start p-4 border-b ng-tns-c103-1"><!---->

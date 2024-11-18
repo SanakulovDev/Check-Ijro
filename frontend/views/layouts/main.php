@@ -57,9 +57,9 @@ AppAsset::register($this);
             left: -100px;
             box-sizing: border-box;
             animation: shadowRolling 2s linear infinite;
-            }
+        }
 
-            @keyframes shadowRolling {
+        @keyframes shadowRolling {
             0% {
                 box-shadow: 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);
             }
@@ -87,9 +87,17 @@ AppAsset::register($this);
             100% {
                 box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0);
             }
+        }
+
+        @media (max-width: 768px) { /* Mobil qurilmalar uchun */
+            .header-logo { 
+                display: none !important; /* Rasm va logotipni yashirish */
             }
 
-
+            .header-logo + .flex { 
+                display: none !important; /* Matnli qismni yashirish */
+            }
+        }
            
 
 
@@ -141,13 +149,12 @@ $isHuman = Yii::$app->session->get('isHuman') || Yii::$app->request->cookies->ge
                 <span matripple="" class="mat-ripple mat-button-ripple mat-button-ripple-round"></span>
                 <span class="mat-button-focus-overlay"></span>
             </button>
-            <div class="hidden lg:flex ng-star-inserted">
-
+            <div class="hidden  lg:flex ng-star-inserted header-logo">
                 <img src="<?=$img?>" class="dark:hidden w-12">
                 <img src="<?=$img?>" class="hidden dark:flex w-12">
             </div>
-            <img src="<?=$img?>" class="flex lg:hidden w-8 ng-star-inserted">
-            <div class="flex flex-col items-start ng-star-inserted">
+            <img src="<?=$img?>" class="flex lg:hidden w-20 ng-star-inserted header-logo">
+            <div class="flex flex-col items-start ng-star-inserted header-logo">
                 <div class="font-medium">Ижро интизоми</div>
                 <div class="text-secondary text-small">Идоралараро ягона электрон тизими</div>
             </div><!----><!---->

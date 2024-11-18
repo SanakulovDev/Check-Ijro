@@ -69,6 +69,8 @@ class DocumentsController extends Controller{
             'destination' => Pdf::DEST_BROWSER,
             'content' => $content,
             'cssFile' => '@vendor/kartik-v/yii2-mpdf/src/assets/kv-mpdf-bootstrap.css',
+            'marginTop' => 3,    // Tepadan bo‘sh joyni olib tashlash
+            'marginBottom' => 0,
             'cssInline' => '
             body {
                 font-family: "Times New Roman", serif;

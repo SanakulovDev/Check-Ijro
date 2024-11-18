@@ -35,15 +35,28 @@
     .navbar-text {
         display: none;
     }
+    #content{
+        margin-left: 0;
+    }
     @media (min-width: 768px) {
+
         .navbar-text {
             display: inline;
         }
         #sidebar{
             left: 0px;
+            /* font-size: 20px; */
         }
         #sidebar.active{
             left: -350px;
+
+            
+        }
+        #sidebar.active + #content {
+            margin-left: 0;
+        }
+        #content{
+            margin-left: calc(350px/2);
         }
     }
 
@@ -55,25 +68,30 @@
         align-items: center;
         background-color: #f8f9fa; /* Orqa fon (optional) */
         overflow: hidden;
-        height: 100vh; /* Ekran balandligini to‘liq olish */
+        max-height: 1200px; /* Ekran balandligini to‘liq olish */
     }
 
     /* Canvasni barcha ekranlar uchun markazlash va responsiv qilish */
     #pdfCanvas {
         max-width: 100%; /* Kenglikni ekranga moslashtirish */
         max-height: 100%; /* Balandlikni ekranga moslashtirish */
-        width: auto; /* Aspect ratio-ni saqlash */
+
         height: auto; /* Aspect ratio-ni saqlash */
     }
 
     /* Mobil ekranlar uchun maxsus moslashtirish */
     @media (max-width: 768px) {
+        .font-medium{
+            color: grey;
+            font-weight: 700;
+        }
         .pdf-container {
             padding: 10px; /* Mobil ekranda biroz bo‘sh joy qo‘shish */
         }
         #pdfCanvas {
             max-width: 90%; /* Kenglikni moslashtirish */
-            max-height: 80%; /* Balandlikni moslashtirish */
+            max-height: 100%; /* Balandlikni moslashtirish */
+            /* width: 50%; */
         }
     }
 
@@ -84,7 +102,7 @@
     
 
     <!-- PDF qismi -->
-        <div id="content" class=" text-right bg-light pdf-container p-0">
+        <div id="content" class=" text-right bg-light pdf-container mt-5">
                 <!-- <embed src="<?php //echo $pdfUrl ?>#zoom=150&toolbar=0&navpanes=0&scrollbar=0"  width="100%" 
                     height="100%" 
                     style="border: none; height: calc(100vh - 20px); width: 100%;" type="application/pdf"> -->
