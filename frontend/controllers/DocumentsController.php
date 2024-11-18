@@ -114,5 +114,35 @@ class DocumentsController extends Controller{
 
         throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
     }
+
+
+    public function actionVerifyRecaptcha()
+    {
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        $recaptcha = Yii::$app->request->post('g-recaptcha-response');
+        $secret = '6LfNm4IqAAAAALVeAQAHqNet7t48YDnAtEvHzq-C'; // O'zingizning secret key'ingizni qo'ying
+
+        $client = new \yii\httpclient\Client();
+        $response = $client->createRequest()
+            ->setMethod('POST')
+            ->setUrl('https://www.google.com/recaptcha/api/siteverify')
+            ->setData(['secret' => $secret, 'response' => $recaptcha])
+            ->send();
+
+        if ($response->isOk && $response->data['success']) {
+            // Foydalanuvchini tasdiqlangan deb belgilash (sessiya va cookie)
+            Yii::$app->session->set('isHuman', true);
+
+            Yii::$app->response->cookies->add(new \yii\web\Cookie([
+                'name' => 'isHuman',
+                'value' => true,
+                'expire' => time() + 3600 * 24 * 30, // 30 kun
+            ]));
+
+            return ['success' => true];
+        } else {
+            return ['success' => false];
+        }
+    }
     
 }

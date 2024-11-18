@@ -14,6 +14,7 @@ AppAsset::register($this);
 
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         
     
@@ -89,22 +90,34 @@ AppAsset::register($this);
             }
 
 
-
+            .recaptcha-active main {
+                filter: blur(5px);
+                pointer-events: none;
+            }
 
 
 
     </style>
 
     <?php $this->registerCsrfMetaTags() ?>
-    <script src="https://www.google.com/recaptcha/enterprise.js?render=6LfYfYEqAAAAAA3Wx5lgQC1RS6oC-WlgVRbHp7J-"></script>
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
     
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
     
 </head>
-
-<body class="d-flex flex-column h-100">
+<?php
+$isHuman = Yii::$app->session->get('isHuman') || Yii::$app->request->cookies->getValue('isHuman');
+?>
+<body class="d-flex flex-column h-100 <?= $isHuman ? '' : 'recaptcha-active' ?>">
     <?php $this->beginBody() ?>
+    <!-- reCAPTCHA Overlay -->
+    <div id="recaptcha-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #fff; z-index: 9999; display: flex; align-items: center; justify-content: center;">
+        <div id="recaptcha-container">
+            <!-- reCAPTCHA vidjeti bu yerda yuklanadi -->
+            <div id="recaptcha"></div>
+        </div>
+    </div>
 
     <div id="loader">
         <div class="loader-container">
@@ -114,14 +127,14 @@ AppAsset::register($this);
         </div>
     </div>
 
-
+        
 
     <?php
     $img =  '/img/Emblem_of_Uzbekistan.svg';
     ?>
-    <div class="relative flex flex-0 items-center w-full h-16 sm:h-20 px-4 md:px-6 z-49 shadow dark:shadow-none dark:border-b bg-card dark:bg-transparent print:hidden">
+    <div class="relative flex flex-0 items-center w-full h-30 sm:h-20 px-4 md:px-6 z-49 shadow dark:shadow-none dark:border-b bg-card dark:bg-transparent print:hidden">
         <div class="flex items-center gap-2 lg:mr-8">
-            <button mat-icon-button="" class="mat-focus-indicator mat-icon-button mat-button-base" id="toggleButton>
+            <button mat-icon-button="" class="mat-focus-indicator mat-icon-button mat-button-base" id="toggleButton">
                 <span class="mat-button-wrapper">
                     <mat-icon role="img" svgicon="feather:menu" class="mat-icon notranslate mat-icon-no-color" aria-hidden="true" data-mat-icon-type="svg" data-mat-icon-name="menu" data-mat-icon-namespace="feather">
                         <svg x="384" y="288" viewBox="0 0 24 24" fit="" height="100%" width="100%" preserveAspectRatio="xMidYMid meet" focusable="false">
@@ -161,25 +174,64 @@ AppAsset::register($this);
             const token = await grecaptcha.enterprise.execute('6LfYfYEqAAAAAA3Wx5lgQC1RS6oC-WlgVRbHp7J-', {action: 'LOGIN'});
             });
         }
-        </script>
 
-        <?php
-        $this->registerJs(<<<JS
+        
+    </script>
+    <script>
+        var widgetId;
+        var verifyCallback = function(response) {
+            // reCAPTCHA muvaffaqiyatli to'ldirilganda chaqiriladi
+            $.ajax({
+                url: '<?= \yii\helpers\Url::to(['documents/verify-recaptcha']) ?>',
+                type: 'POST',
+                data: {
+                    'g-recaptcha-response': response,
+                    '_csrf-frontend': '<?= Yii::$app->request->csrfToken ?>'
+                },
+                success: function(data) {
+                    if (data.success) {
+                        // Overlayni yashirish
+                        $('#recaptcha-overlay').fadeOut();
+                    } else {
+                        // Xato bo'lsa, xabar chiqaring
+                        alert('reCAPTCHA tekshiruvi muvaffaqiyatsiz bo\'ldi. Iltimos, qayta urinib ko\'ring.');
+                        grecaptcha.reset(widgetId);
+                    }
+                }
+            });
+        };
+
+        var onloadCallback = function() {
+            // reCAPTCHA vidjetini yuklaymiz
+            widgetId = grecaptcha.render('recaptcha', {
+                'sitekey' : "6LfNm4IqAAAAALl9PcuV4gazAYvicz4xE3vRrzHi", // O'zingizning site key'ingizni qo'ying
+                'callback' : verifyCallback
+            });
+        };
+
+        // Agar foydalanuvchi allaqachon tasdiqlangan bo'lsa, overlayni yashirish
+        $(document).ready(function() {
+            <?php if (Yii::$app->session->get('isHuman') || Yii::$app->request->cookies->getValue('isHuman')): ?>
+                $('#recaptcha-overlay').hide();
+            <?php endif; ?>
+        });
+    </script>
+
+    <?php
+    $this->registerJs(<<<JS
         $(document).ready(function () {
             $('#loader').fadeIn(); // Loaderni ko'rsatadi
-
             $(window).on('load', function () {
                 $('#loader').fadeOut(); // Sahifa yuklanganda loaderni yashiradi
             });
-
             $(document).ajaxStart(function () {
                 $('#loader').fadeIn(); // AJAX so'rov boshida
             }).ajaxStop(function () {
                 $('#loader').fadeOut(); // AJAX so'rov tugagandan keyin
             });
         });
-        JS, \yii\web\View::POS_END);
-        ?>
+    JS, \yii\web\View::POS_END);
+    ?>
 <?php $this->endBody() ?>
 </body>
 

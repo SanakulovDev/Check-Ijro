@@ -22,7 +22,7 @@ class AppAsset extends AssetBundle
         'js/emicrypter.js',
         'js/polyfills.fd0e8ca299601d56c5f2.js',
         'js/main.b747d9c32c1272c4097e.js',
-        // "https://www.google.com/recaptcha/enterprise.js?render=6LfYfYEqAAAAAA3Wx5lgQC1RS6oC-WlgVRbHp7J-",
+        "https://www.google.com/recaptcha/api.js?render=6LfWSYIqAAAAAF_GP4H2nKW1wjwQ9Y-lWfxWxSB0"
 
     ];
     public $depends = [
