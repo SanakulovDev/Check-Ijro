@@ -90,17 +90,13 @@ AppAsset::register($this);
         }
 
         @media (max-width: 768px) { /* Mobil qurilmalar uchun */
-            .header-logo { 
-                display: none !important; /* Rasm va logotipni yashirish */
-            }
-
-            .header-logo + .flex { 
-                display: none !important; /* Matnli qismni yashirish */
-            }
+            
         }
            
 
-
+        .hidden-logo {
+            display: none !important;
+        }
 
     </style>
 
@@ -153,7 +149,7 @@ $isHuman = Yii::$app->session->get('isHuman') || Yii::$app->request->cookies->ge
                 <img src="<?=$img?>" class="dark:hidden w-12">
                 <img src="<?=$img?>" class="hidden dark:flex w-12">
             </div>
-            <img src="<?=$img?>" class="flex lg:hidden w-20 ng-star-inserted header-logo">
+            <img src="<?=$img?>" class="flex lg:hidden w-10 ng-star-inserted header-logo">
             <div class="flex flex-col items-start ng-star-inserted header-logo">
                 <div class="font-medium">Ижро интизоми</div>
                 <div class="text-secondary text-small">Идоралараро ягона электрон тизими</div>
@@ -224,8 +220,15 @@ $isHuman = Yii::$app->session->get('isHuman') || Yii::$app->request->cookies->ge
         $(document).ready(function () {
             $('#toggleButton').on('click', function () {
                 $('#sidebar').toggleClass('active');
+                if ($('#sidebar').hasClass('active')) {
+                    // Sidebar ochilganida logotip va matnlarni yashirish
+                    $('.header-logo').addClass('hidden-logo');
+                    $('.header-logo').removeClass('flex');
+                } else {
+                    // Sidebar yopilganida logotip va matnlarni qaytarish
+                    $('.header-logo').removeClass('hidden-logo');
+                }
             });
-            
         });
     </script>
 

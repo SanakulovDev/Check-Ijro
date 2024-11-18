@@ -38,6 +38,7 @@
     #content{
         margin-left: 0;
         overflow-y: auto;
+        height: 800px;
     }
     @media (min-width: 768px) {
 
@@ -68,8 +69,8 @@
         justify-content: center;
         align-items: center;
         background-color: #f8f9fa; /* Orqa fon (optional) */
-        overflow: hidden;
-        max-height: 1200px; /* Ekran balandligini to‘liq olish */
+        overflow: auto;
+         /* Ekran balandligini to‘liq olish */
     }
 
     /* Canvasni barcha ekranlar uchun markazlash va responsiv qilish */
