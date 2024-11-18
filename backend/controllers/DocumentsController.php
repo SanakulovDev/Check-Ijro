@@ -127,7 +127,7 @@ class DocumentsController extends Controller
                             
                             $transaction->commit();
                             Yii::$app->session->setFlash('success', 'Insert successfully');
-                            return $this->redirect(['pdf', 'id'=>$id]);
+                            return $this->redirect(['index']);
                         }
                     }
                 }

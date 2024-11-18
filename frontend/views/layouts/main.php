@@ -120,9 +120,18 @@ AppAsset::register($this);
     $img =  '/img/Emblem_of_Uzbekistan.svg';
     ?>
     <div class="relative flex flex-0 items-center w-full h-16 sm:h-20 px-4 md:px-6 z-49 shadow dark:shadow-none dark:border-b bg-card dark:bg-transparent print:hidden">
-        <div class="flex items-center gap-2 lg:mr-8"><button mat-icon-button="" class="mat-focus-indicator mat-icon-button mat-button-base"><span class="mat-button-wrapper"><mat-icon role="img" svgicon="feather:menu" class="mat-icon notranslate mat-icon-no-color" aria-hidden="true" data-mat-icon-type="svg" data-mat-icon-name="menu" data-mat-icon-namespace="feather"><svg x="384" y="288" viewBox="0 0 24 24" fit="" height="100%" width="100%" preserveAspectRatio="xMidYMid meet" focusable="false">
+        <div class="flex items-center gap-2 lg:mr-8">
+            <button mat-icon-button="" class="mat-focus-indicator mat-icon-button mat-button-base" id="toggleButton>
+                <span class="mat-button-wrapper">
+                    <mat-icon role="img" svgicon="feather:menu" class="mat-icon notranslate mat-icon-no-color" aria-hidden="true" data-mat-icon-type="svg" data-mat-icon-name="menu" data-mat-icon-namespace="feather">
+                        <svg x="384" y="288" viewBox="0 0 24 24" fit="" height="100%" width="100%" preserveAspectRatio="xMidYMid meet" focusable="false">
                             <path fill="none" stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="currentColor" d="M3 12h18M3 6h18M3 18h18"></path>
-                        </svg></mat-icon></span><span matripple="" class="mat-ripple mat-button-ripple mat-button-ripple-round"></span><span class="mat-button-focus-overlay"></span></button>
+                        </svg>
+                    </mat-icon>
+                </span>
+                <span matripple="" class="mat-ripple mat-button-ripple mat-button-ripple-round"></span>
+                <span class="mat-button-focus-overlay"></span>
+            </button>
             <div class="hidden lg:flex ng-star-inserted">
 
                 <img src="<?=$img?>" class="dark:hidden w-12">
