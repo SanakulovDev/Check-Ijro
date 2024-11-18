@@ -22,7 +22,8 @@
         "hail812/yii2-adminlte3": "~1.1",
         "2amigos/yii2-ckeditor-widget": "^2.1",
         "kartik-v/yii2-mpdf": "*",
-        "endroid/qr-code": "^5.1"
+        "endroid/qr-code": "^5.1",
+        "yiisoft/yii2-httpclient": "~2.0.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
