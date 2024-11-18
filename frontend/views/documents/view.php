@@ -11,17 +11,17 @@
     <!-- PDF qismi -->
     <div class="col-md-9 col-sm-12 text-right bg-secondary pdf-container">
         <div class="pdf-page" style="height: 100vh; overflow-y: auto;">
-            <object data="<?= $pdfUrl ?>#zoom=150&toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" width="100%" height="100%">
+            <!-- <object data="<?= $pdfUrl ?>#zoom=150&toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" width="100%" height="100%">
                 <p>PDF faylni yuklab olish uchun <a href="<?= $pdfUrl ?>">bu yerga bosing</a>.</p>
-            </object>
+            </object> -->
         </div>
-        <!-- <div class="pdf-page">
-            <iframe src="<?php // $pdfUrl ?>#zoom=150&toolbar=0&navpanes=0&scrollbar=0" 
+        <div class="pdf-page">
+            <iframe src="<?= $pdfUrl ?>#zoom=150&toolbar=0&navpanes=0&scrollbar=0" 
                 width="100%" 
                 height="100%" 
                 style="border: none; height: calc(100vh - 20px); width: 100%;">
             </iframe>
-        </div> -->
+        </div>
     </div>
 </div>
 
