@@ -30,8 +30,7 @@ $validity_period_end = date("d", strtotime($model->validity_period_end)) . ' ' .
 
 
 ?>
-<div class="sidebar" style="min-height: 100vh; background: white; overflow-x: auto;">
-    <div class="">
+<div id="sidebar" style="min-height: 100vh; ; overflow-x: auto;">
         <div class="row">
             <div class="col-md-10 ml-1">
 
@@ -104,5 +103,4 @@ $validity_period_end = date("d", strtotime($model->validity_period_end)) . ' ' .
 
             </div>
         </div>
-    </div>
 </div>

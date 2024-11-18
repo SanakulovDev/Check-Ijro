@@ -85,26 +85,6 @@ class DocumentsController extends Controller{
         $pdf = new Pdf($pdfConfig);
 
         return $pdf->render();
-
-        $fileName =  $model->document_code  .'.pdf';
-        $filePath = Yii::getAlias('@backend/documents/') . $fileName;
-        // vd($filePath);
-        if(is_file($filePath)){
-            unlink($filePath);
-        }
-        // PDF generatsiyasi va saqlash
-        $pdf = new Pdf($pdfConfig);
-        $pdf->Output($filePath, \Mpdf\Output\Destination::FILE);
-
-        // Fayl yo'lini Documents jadvaliga saqlash
-        $model->file_path = '/documents/' . $fileName;
-
-        if ($model->save(false)) {
-            Yii::$app->session->setFlash('success', 'PDF generatsiya qilindi va saqlandi.');
-        } else {
-            Yii::$app->session->setFlash('error', 'PDF saqlashda xatolik yuz berdi.');
-        }
-        return $this->redirect(['index']);
     }
     protected function findModel($id)
     {

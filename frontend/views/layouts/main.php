@@ -90,10 +90,7 @@ AppAsset::register($this);
             }
 
 
-            .recaptcha-active main {
-                filter: blur(5px);
-                pointer-events: none;
-            }
+           
 
 
 
@@ -109,12 +106,11 @@ AppAsset::register($this);
 <?php
 $isHuman = Yii::$app->session->get('isHuman') || Yii::$app->request->cookies->getValue('isHuman');
 ?>
-<body class="d-flex flex-column h-100 <?= $isHuman ? '' : 'recaptcha-active' ?>">
+<body class="d-flex flex-column h-100 <?= $isHuman ? '' : 'recaptcha-active1' ?> bg-light">
     <?php $this->beginBody() ?>
     <!-- reCAPTCHA Overlay -->
-    <div id="recaptcha-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #ffffff; z-index: 9999; display: flex; align-items: center; justify-content: center;">
+    <div id="recaptcha-overlay1" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #fff; z-index: 9999; display: flex; align-items: center; justify-content: center;">
         <div id="recaptcha-container">
-            <!-- reCAPTCHA vidjeti bu yerda yuklanadi -->
             <div id="recaptcha"></div>
         </div>
     </div>
@@ -132,7 +128,7 @@ $isHuman = Yii::$app->session->get('isHuman') || Yii::$app->request->cookies->ge
     <?php
     $img =  '/img/Emblem_of_Uzbekistan.svg';
     ?>
-    <div class="relative flex flex-0 items-center w-full h-30 sm:h-20 px-4 md:px-6 z-49 shadow dark:shadow-none dark:border-b bg-card dark:bg-transparent print:hidden">
+    <div class="relative bg-white flex flex-0 items-center w-full h-30 sm:h-20 px-4 md:px-6 z-49 shadow dark:shadow-none dark:border-b bg-card dark:bg-transparent print:hidden">
         <div class="flex items-center gap-2 lg:mr-8">
             <button mat-icon-button="" class="mat-focus-indicator mat-icon-button mat-button-base" id="toggleButton">
                 <span class="mat-button-wrapper">
@@ -166,7 +162,7 @@ $isHuman = Yii::$app->session->get('isHuman') || Yii::$app->request->cookies->ge
     <main role="main" class="flex-shrink-0 bg-light">
             <?= $content ?>
     </main>
-    
+   
     <script>
         function onClick(e) {
             e.preventDefault();
@@ -177,6 +173,9 @@ $isHuman = Yii::$app->session->get('isHuman') || Yii::$app->request->cookies->ge
 
         
     </script>
+
+    
+
     <script>
         var widgetId;
         var verifyCallback = function(response) {
@@ -212,10 +211,14 @@ $isHuman = Yii::$app->session->get('isHuman') || Yii::$app->request->cookies->ge
         };
 
         // Agar foydalanuvchi allaqachon tasdiqlangan bo'lsa, overlayni yashirish
-        $(document).ready(function() {
-            <?php if (Yii::$app->session->get('isHuman') || Yii::$app->request->cookies->getValue('isHuman')): ?>
-                $('#recaptcha-overlay').hide();
-            <?php endif; ?>
+        
+
+
+        $(document).ready(function () {
+            $('#toggleButton').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+            
         });
     </script>
 
