@@ -3,12 +3,8 @@
 /** @var \yii\web\View $this */
 /** @var string $content */
 
-use common\widgets\Alert;
 use frontend\assets\AppAsset;
-use yii\bootstrap5\Breadcrumbs;
 use yii\bootstrap5\Html;
-use yii\bootstrap5\Nav;
-use yii\bootstrap5\NavBar;
 
 AppAsset::register($this);
 ?>
@@ -18,21 +14,126 @@ AppAsset::register($this);
 
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
+    <style>
+        
+    
+        #loader {
+            position: fixed;
+            z-index: 9999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #0d1117; /* Qorong'i fon rangi */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
+        .loader-container {
+            text-align: center;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .loader-logo {
+            width: 150px; /* Logotip o'lchami */
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .loader-spinner {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: block;
+            margin:15px auto;
+            position: relative;
+            color: #FFF;
+            left: -100px;
+            box-sizing: border-box;
+            animation: shadowRolling 2s linear infinite;
+            }
+
+            @keyframes shadowRolling {
+            0% {
+                box-shadow: 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);
+            }
+            12% {
+                box-shadow: 100px 0 white, 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);
+            }
+            25% {
+                box-shadow: 110px 0 white, 100px 0 white, 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);
+            }
+            36% {
+                box-shadow: 120px 0 white, 110px 0 white, 100px 0 white, 0px 0 rgba(255, 255, 255, 0);
+            }
+            50% {
+                box-shadow: 130px 0 white, 120px 0 white, 110px 0 white, 100px 0 white;
+            }
+            62% {
+                box-shadow: 200px 0 rgba(255, 255, 255, 0), 130px 0 white, 120px 0 white, 110px 0 white;
+            }
+            75% {
+                box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 130px 0 white, 120px 0 white;
+            }
+            87% {
+                box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 130px 0 white;
+            }
+            100% {
+                box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0);
+            }
+            }
+
+
+
+
+
+
+    </style>
 
     <?php $this->registerCsrfMetaTags() ?>
     <script src="https://www.google.com/recaptcha/enterprise.js?render=6LfYfYEqAAAAAA3Wx5lgQC1RS6oC-WlgVRbHp7J-"></script>
+    <?php
+        $this->registerJs(<<<JS
+            $(document).ready(function () {
+                $('#loader').fadeIn(); // Sahifa yuklanayotganda loaderni ko'rsatadi
+                
+                $(window).on('load', function () {
+                    $('#loader').fadeOut(); // Sahifa to'liq yuklanganda loaderni yashiradi
+                });
 
+                $(document).ajaxStart(function () {
+                    $('#loader').fadeIn(); // AJAX so'rov boshida loaderni ko'rsatadi
+                }).ajaxStop(function () {
+                    $('#loader').fadeOut(); // AJAX so'rov tugagach loaderni yashiradi
+                });
+            });
+        JS
+        , \yii\web\View::POS_END); // POS_END — scriptlarni sahifaning oxirida joylashtiradi
+        ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
-
+    
 </head>
 
 <body class="d-flex flex-column h-100">
     <?php $this->beginBody() ?>
+
+    <div id="loader" style="display: none;">
+        <div class="loader-container">
+            <img src="/img/Emblem_of_Uzbekistan.svg" alt="Logo" class="loader-logo">
+            <div class="loader-spinner">
+            </div>
+        </div>
+    </div>
+
+
+
     <?php
     $img =  '/img/Emblem_of_Uzbekistan.svg';
-
     ?>
     <div class="relative flex flex-0 items-center w-full h-16 sm:h-20 px-4 md:px-6 z-49 shadow dark:shadow-none dark:border-b bg-card dark:bg-transparent print:hidden">
         <div class="flex items-center gap-2 lg:mr-8"><button mat-icon-button="" class="mat-focus-indicator mat-icon-button mat-button-base"><span class="mat-button-wrapper"><mat-icon role="img" svgicon="feather:menu" class="mat-icon notranslate mat-icon-no-color" aria-hidden="true" data-mat-icon-type="svg" data-mat-icon-name="menu" data-mat-icon-namespace="feather"><svg x="384" y="288" viewBox="0 0 24 24" fit="" height="100%" width="100%" preserveAspectRatio="xMidYMid meet" focusable="false">
@@ -59,16 +160,39 @@ AppAsset::register($this);
     <main role="main" class="flex-shrink-0 bg-light">
             <?= $content ?>
     </main>
-    <?php $this->endBody() ?>
+    
+    <script>
+        function onClick(e) {
+            e.preventDefault();
+            grecaptcha.enterprise.ready(async () => {
+            const token = await grecaptcha.enterprise.execute('6LfYfYEqAAAAAA3Wx5lgQC1RS6oC-WlgVRbHp7J-', {action: 'LOGIN'});
+            });
+        }
+        </script>
+
+        <?php
+        $this->registerJs(<<<JS
+        $(document).ready(function () {
+            $('#loader').fadeIn(); // Loaderni ko'rsatadi
+
+            $(window).on('load', function () {
+                $('#loader').fadeOut(); // Sahifa yuklanganda loaderni yashiradi
+            });
+
+            $(document).ajaxStart(function () {
+                $('#loader').fadeIn(); // AJAX so'rov boshida
+            }).ajaxStop(function () {
+                $('#loader').fadeOut(); // AJAX so'rov tugagandan keyin
+            });
+        });
+        JS, \yii\web\View::POS_END);
+        ?>
+<?php $this->endBody() ?>
 </body>
 
-<script>
-  function onClick(e) {
-    e.preventDefault();
-    grecaptcha.enterprise.ready(async () => {
-      const token = await grecaptcha.enterprise.execute('6LfYfYEqAAAAAA3Wx5lgQC1RS6oC-WlgVRbHp7J-', {action: 'LOGIN'});
-    });
-  }
-</script>
+
+</body>
+
+
 </html>
 <?php $this->endPage();

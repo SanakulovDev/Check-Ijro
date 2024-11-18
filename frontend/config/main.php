@@ -42,7 +42,11 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                'd/<code:\d+>' => 'documents/view',
+                'd/<code:\w+>' => 'documents/view', // Bu qoidani to'g'ri 
+                '<_c:[\w\-]+>/<id:\d+>' => '<_c>/view',
+                '<_c:[\w\-]+>/<id:\d+>/<_a:[\w\-]+>' => '<_c>/<_a>',
+                '<_c:[\w\-]+>' => '<_c>/index',
+                '<_c:[\w\-]+>/<_a:[\w\-]+>' => '<_c>/<_a>',
             ],
         ],
     ],
