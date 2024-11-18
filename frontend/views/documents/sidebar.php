@@ -44,7 +44,7 @@ $document_date = date("d", strtotime($model->document_date)) . ' ' . $uzbek_mont
 $validity_period_start = date("d", strtotime($model->validity_period_start)) . ' ' . $uzbek_months2[(int)date("m", strtotime($model->validity_period_start))] . ' ' . date("Y", strtotime($model->validity_period_start));
 $validity_period_end = date("d", strtotime($model->validity_period_end)) . ' ' . $uzbek_months2[(int)date("m", strtotime($model->validity_period_end))] . ' ' . date("Y", strtotime($model->validity_period_end));
 
-$opacity = 'opacity: 0.6';
+$opacity = 'opacity: 0.89';
 
 ?>
 <div id="sidebar" style="min-height: 100vh; ; overflow-x: auto;">
