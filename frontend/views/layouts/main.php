@@ -106,7 +106,7 @@ AppAsset::register($this);
 <body class="d-flex flex-column h-100">
     <?php $this->beginBody() ?>
 
-    <div id="loader" style="">
+    <div id="loader">
         <div class="loader-container">
             <img src="/img/Emblem_of_Uzbekistan.svg" alt="Logo" class="loader-logo">
             <div class="loader-spinner">
