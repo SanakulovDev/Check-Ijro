@@ -12,7 +12,7 @@
         background: #fff;
         color: #222;
         transition: all 0.3s;
-        height: calc(100% - 56px);
+        height: calc(100% - 20px);
         overflow-y: auto;
     }
     #sidebar.active {
@@ -22,7 +22,7 @@
     #content {
         transition: all 0.3s;
         margin-left: 0;
-        padding-top: 56px; /* Navbar balandligi */
+        padding-top: 20px; /* Navbar balandligi */
     }
     #sidebar.active + #content {
         margin-left: 350px;

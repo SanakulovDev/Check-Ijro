@@ -218,16 +218,27 @@ $isHuman = Yii::$app->session->get('isHuman') || Yii::$app->request->cookies->ge
 
 
         $(document).ready(function () {
-            $('#toggleButton').on('click', function () {
-                $('#sidebar').toggleClass('active');
-                if ($('#sidebar').hasClass('active')) {
-                    // Sidebar ochilganida logotip va matnlarni yashirish
-                    $('.header-logo').addClass('hidden-logo');
-                    $('.header-logo').removeClass('flex');
-                } else {
-                    // Sidebar yopilganida logotip va matnlarni qaytarish
-                    $('.header-logo').removeClass('hidden-logo');
-                }
+            function handleSidebarToggle() {
+                const isMobile = window.matchMedia('(max-width: 768px)').matches; // Mobil versiya tekshiruvi
+
+                $('#toggleButton').on('click', function () {
+                    $('#sidebar').toggleClass('active');
+                    if ($('#sidebar').hasClass('active') && isMobile) {
+                        // Sidebar ochilganida logotip va matnlarni yashirish faqat mobilda
+                        $('.header-logo').addClass('hidden-logo');
+                        $('.header-logo').removeClass('flex');
+                    } else {
+                        // Sidebar yopilganida logotip va matnlarni qaytarish
+                        $('.header-logo').removeClass('hidden-logo');
+                    }
+                });
+            }
+
+            handleSidebarToggle();
+
+            // Ekran o'lchami o'zgarganda qayta tekshiradi
+            $(window).on('resize', function () {
+                handleSidebarToggle();
             });
         });
     </script>
