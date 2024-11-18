@@ -37,6 +37,7 @@
     }
     #content{
         margin-left: 0;
+        overflow-y: auto;
     }
     @media (min-width: 768px) {
 

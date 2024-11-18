@@ -18,6 +18,21 @@ $uzbek_months = [
     12 => "декабрь"
 ];
 
+$uzbek_months2 = [
+    1 => "янв",
+    2 => "фев",
+    3 => "март",
+    4 => "апр",
+    5 => "май",
+    6 => "июнь",
+    7 => "июль",
+    8 => "авг",
+    9 => "сен",
+    10 => "окт",
+    11 => "ноя",
+    12 => "дек"
+];
+
 $greyColor = '';
 $year = date("Y", $timestamp);
 $month = (int)date("m", $timestamp);
@@ -26,9 +41,10 @@ $day = date("d", $timestamp);
 $resolution_date = $year . "-йил " . $day . "-" . $uzbek_months[$month] . 'даги';
 
 $document_date = date("d", strtotime($model->document_date)) . ' ' . $uzbek_months[(int)date("m", strtotime($model->document_date))] . ' ' . date("Y", strtotime($model->document_date));
-$validity_period_start = date("d", strtotime($model->validity_period_start)) . ' ' . $uzbek_months[(int)date("m", strtotime($model->validity_period_start))] . ' ' . date("Y", strtotime($model->validity_period_start));
-$validity_period_end = date("d", strtotime($model->validity_period_end)) . ' ' . $uzbek_months[(int)date("m", strtotime($model->validity_period_end))] . ' ' . date("Y", strtotime($model->validity_period_end));
+$validity_period_start = date("d", strtotime($model->validity_period_start)) . ' ' . $uzbek_months2[(int)date("m", strtotime($model->validity_period_start))] . ' ' . date("Y", strtotime($model->validity_period_start));
+$validity_period_end = date("d", strtotime($model->validity_period_end)) . ' ' . $uzbek_months2[(int)date("m", strtotime($model->validity_period_end))] . ' ' . date("Y", strtotime($model->validity_period_end));
 
+$opacity = 'opacity: 0.6';
 
 ?>
 <div id="sidebar" style="min-height: 100vh; ; overflow-x: auto;">
@@ -48,7 +64,7 @@ $validity_period_end = date("d", strtotime($model->validity_period_end)) . ' ' .
                                 <path d="M28.301 21.537c-0.149 0-0.294-0.064-0.401-0.183l-3.296-3.764c-0.194-0.222-0.171-0.558 0.051-0.752 0.221-0.194 0.556-0.173 0.753 0.049l3.295 3.765c0.195 0.223 0.172 0.557-0.050 0.752-0.103 0.090-0.228 0.133-0.352 0.133z"></path>
                                 <path d="M14.101 21.668c-0.156 0-0.311-0.068-0.417-0.201-0.185-0.23-0.147-0.563 0.082-0.75l6.021-4.814c0.229-0.185 0.564-0.146 0.75 0.083 0.183 0.23 0.146 0.565-0.083 0.751l-6.021 4.815c-0.098 0.078-0.214 0.115-0.332 0.115z"></path>
                             </svg></mat-icon>
-                        <div class="ml-1.5">Наманган вилояти ҳокимлиги</div>
+                        <div class="ml-1.5" style="<?=$opacity?>">Наманган вилояти ҳокимлиги</div>
                     </div><!----><!---->
                 </div>
 
@@ -58,7 +74,7 @@ $validity_period_end = date("d", strtotime($model->validity_period_end)) . ' ' .
                     <div class="flex items-center leading-5 text-md text-secondary cursor-pointer ng-star-inserted"><mat-icon role="img" class="mat-icon notranslate icon-size-6 text-secondary mat-icon-no-color" aria-hidden="true" data-mat-icon-type="svg" data-mat-icon-name="user-circle" data-mat-icon-namespace="heroicons_outline"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" fit="" height="100%" width="100%" preserveAspectRatio="xMidYMid meet" focusable="false">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                             </svg></mat-icon>
-                        <div class="ml-1.5"> <?=$model->issuer_name?> <!----><!----><!----></div>
+                        <div class="ml-1.5" style="<?=$opacity?>"> <?=$model->issuer_name?> <!----><!----><!----></div>
                     </div><!---->
                 </div>
 
@@ -68,7 +84,7 @@ $validity_period_end = date("d", strtotime($model->validity_period_end)) . ' ' .
                     <div class="flex items-center leading-5 text-md text-secondary cursor-pointer"><mat-icon role="img" class="mat-icon notranslate icon-size-6 text-secondary mat-icon-no-color" aria-hidden="true" data-mat-icon-type="svg" data-mat-icon-name="user-circle" data-mat-icon-namespace="heroicons_outline"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" fit="" height="100%" width="100%" preserveAspectRatio="xMidYMid meet" focusable="false">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                             </svg></mat-icon>
-                        <div class="ml-1.5"> <?= $model->executor_name?> </div>
+                        <div class="ml-1.5" style="<?=$opacity?>"> <?= $model->executor_name?> </div>
                     </div>
                 </div>
 
@@ -77,7 +93,7 @@ $validity_period_end = date("d", strtotime($model->validity_period_end)) . ' ' .
                     <div class="flex items-center leading-5 text-md"><mat-icon role="img" class="mat-icon notranslate icon-size-6 text-secondary mat-icon-no-color" aria-hidden="true" data-mat-icon-type="svg" data-mat-icon-name="clipboard-check" data-mat-icon-namespace="heroicons_outline"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" fit="" height="100%" width="100%" preserveAspectRatio="xMidYMid meet" focusable="false">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
                             </svg></mat-icon>
-                        <div class="ml-1.5"> <?= $model->signing_organization?> </div>
+                        <div class="ml-1.5" style="<?=$opacity?>"> <?= $model->signing_organization?> </div>
                     </div>
                 </div>
 
@@ -87,7 +103,7 @@ $validity_period_end = date("d", strtotime($model->validity_period_end)) . ' ' .
                     <div class="flex items-center leading-5 text-md text-secondary"><mat-icon role="img" class="mat-icon notranslate icon-size-6 text-secondary mat-icon-no-color" aria-hidden="true" data-mat-icon-type="svg" data-mat-icon-name="calendar" data-mat-icon-namespace="feather"><svg x="720" y="48" viewBox="0 0 24 24" fit="" height="100%" width="100%" preserveAspectRatio="xMidYMid meet" focusable="false">
                                 <path fill="none" stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="currentColor" d="M5 4h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2zM16 2v4M8 2v4M3 10h18"></path>
                             </svg></mat-icon>
-                        <div class="ml-1.5"> <?= $validity_period_start?> - <?=$validity_period_end?> <!----><!----><!----></div>
+                        <div class="ml-1.5" style="<?=$opacity?>"> <?= $validity_period_start?> - <?=$validity_period_end?> <!----><!----><!----></div>
                     </div>
                 </div>
 
@@ -97,7 +113,7 @@ $validity_period_end = date("d", strtotime($model->validity_period_end)) . ' ' .
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                             </svg></mat-icon>
                         <div class="ml-1.5"> 
-                            <a style="font-style: italic;" target="_blank" href="<?= $pdfUrl?>"><?=$model->document_code?>.pdf</a>    
+                            <a style="font-style: italic; <?=$opacity?>" target="_blank" href="<?= $pdfUrl?>"><?=$model->document_code?>.pdf</a>    
                         </div>
                     </div><!---->
                 </div>
