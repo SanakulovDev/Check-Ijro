@@ -110,7 +110,7 @@ AppAsset::register($this);
 <?php
 $isHuman = Yii::$app->session->get('isHuman') || Yii::$app->request->cookies->getValue('isHuman');
 ?>
-<body class="d-flex flex-column h-100 <?= $isHuman ? '' : 'recaptcha-active' ?> bg-light">
+<body class="d-flex flex-column h-100 <?= $isHuman ? '' : 'recaptcha-active' ?> " style="background-color: #E5EEF9;">
     <?php $this->beginBody() ?>
     <!-- reCAPTCHA Overlay -->
     <div id="recaptcha-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #fff; z-index: 9999; display: flex; align-items: center; justify-content: center;">
