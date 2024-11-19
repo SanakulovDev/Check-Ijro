@@ -41,7 +41,7 @@ AppAsset::register($this);
         }
 
         .loader-logo {
-            width: 100px;
+            width: 110px;
             /* Logotip o'lchami */
             height: auto;
             margin-bottom: 20px;
