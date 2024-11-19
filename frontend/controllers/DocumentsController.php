@@ -74,7 +74,7 @@ class DocumentsController extends Controller{
             'cssInline' => '
             body {
                 font-family: "Times New Roman", serif;
-                width: 80%;
+                width: 100%;
             }
             .kv-heading-1 {
                 font-size: 18px;

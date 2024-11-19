@@ -1,30 +1,21 @@
 
 <h5 style="color: red">IJRO.GOV.UZ тизими оркали ЭРИ билан тасдикланган, Хужжат коди: <?=$model->document_code?></h5>
-<img src="<?=$headerLogo?>" alt="" style="bottom: 20px">
-<div class="row">
-    <table>
+<div class="" style="width: 100%;">
+    <img src="<?=$headerLogo?>" alt="" style="bottom: 20px; width: 1000px" >
+</div>
+<div class="content">
+
+
+<div class="row" style="margin-left: 20px; ">
+    <table style="width: 90%; text-align: center">
         <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td rowspan="10">
+            <td style="width: 50%;">
                 <span style="margin-left: 200px; font-weight: bold">
 
                 <?php
                 $timestamp = strtotime($model->document_date);
 
-                
+
                 // IntlDateFormatter yordamida formatlash
                 $formatter = new IntlDateFormatter(
                     'ru_RU', // Mahalliylashgan til (rus tili)
@@ -41,118 +32,25 @@
 
                 // Natijani chiqarish
                 echo $formatted_date;
-                
+
                 ?>
                 </span>
-
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-                <span style="margin-left: 200px; font-weight: bold">
+            <td style="width: 50%; text-align: right">
+                <span style="font-weight: bold">
                     №<?=$model->document_number?>
                 </span>
             </td>
-
         </tr>
     </table>
 
     <h4 style="text-align: center;">НАМАНГАН ШАҲАР ҲОКИМИНИНГ</h4>
+    
 
-    <table>
+    <table style="width: 90%; text-align: center">
         <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-                <span style="margin-left: 200px;">
+            <td style="width: 50%;">
+                <span style="margin-left: 200px; ">
 
                 <?php
                     $timestamp = strtotime($model->resolution_date);
@@ -184,77 +82,16 @@
                     echo $formatted_date;
                 ?>
                 </span>
-
             </td>
-          
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td rowspan="10">
+            <td style="width: 50%; text-align: right">
                 <span style="margin-left: 200px; ">
                     №<?=$model->resolution_number?>-сонли қароридан
                 </span>
             </td>
-
         </tr>
     </table>
+
+    
 
     <h4 style="text-align:center; font-weight: bold; text-transform: uppercase;">
         Архив кўчирмаси
