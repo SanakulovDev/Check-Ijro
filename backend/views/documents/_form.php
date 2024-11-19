@@ -77,14 +77,16 @@ use yii\widgets\ActiveForm;
 
     <div class="row">
         <div class="col-md-12">
-           <?= $form->field($modelDetails, 'main_content')->widget(CKEditor::class, [
+        <?= $form->field($modelDetails, 'main_content')->widget(CKEditor::class, [
             'options' => ['rows' => 6],
-            'preset' => 'basic',
+            'preset' => 'custom',
             'clientOptions' => [
-                'filebrowserImageBrowseUrl' => '/filemanager?type=Images',
-                'filebrowserImageUploadUrl' => '/filemanager/upload?type=Images&_token=' . Yii::$app->request->csrfToken,
-                'filebrowserBrowseUrl' => '/filemanager?type=Files',
-                'filebrowserUploadUrl' => '/filemanager/upload?type=Files&_token=' . Yii::$app->request->csrfToken,
+                'extraPlugins' => 'basicstyles,justify', // Underline va align funksiyalari uchun plaginni faollashtirish
+                'toolbar' => [
+                    ['name' => 'basicstyles', 'items' => ['Bold', 'Italic', 'Underline']], // Matn formatlash tugmalari
+                    ['name' => 'paragraph', 'items' => ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock']], // Matnni tekislash tugmalari
+                ],
+                'removeButtons' => '', // Kerakli tugmalarni o‘chirishga yo‘l qo‘ymaslik
             ],
         ]) ?>
         </div>
@@ -95,12 +97,14 @@ use yii\widgets\ActiveForm;
         <div class="col-md-12">
            <?= $form->field($modelDetails, 'resolution_content')->widget(CKEditor::class, [
             'options' => ['rows' => 6],
-            'preset' => 'basic',
+            'preset' => 'custom',
             'clientOptions' => [
-                'filebrowserImageBrowseUrl' => '/filemanager?type=Images',
-                'filebrowserImageUploadUrl' => '/filemanager/upload?type=Images&_token=' . Yii::$app->request->csrfToken,
-                'filebrowserBrowseUrl' => '/filemanager?type=Files',
-                'filebrowserUploadUrl' => '/filemanager/upload?type=Files&_token=' . Yii::$app->request->csrfToken,
+                'extraPlugins' => 'basicstyles,justify', // Underline va align funksiyalari uchun plaginni faollashtirish
+                'toolbar' => [
+                    ['name' => 'basicstyles', 'items' => ['Bold', 'Italic', 'Underline']], // Matn formatlash tugmalari
+                    ['name' => 'paragraph', 'items' => ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock']], // Matnni tekislash tugmalari
+                ],
+                'removeButtons' => '', // Kerakli tugmalarni o‘chirishga yo‘l qo‘ymaslik
             ],
         ]) ?>
         </div>

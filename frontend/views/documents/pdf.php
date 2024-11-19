@@ -259,38 +259,9 @@
     <h4 style="text-align:center; font-weight: bold; text-transform: uppercase;">
         Архив кўчирмаси
     </h4>
-    <table>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-                <p style="width: 300px;">
-                    <?=$modelDetails->main_content?>
-                </p>
-            </td>
-
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-    </table>
+    <div class="" style="width: 90%; text-align: justify; margin-left: 50px">
+        <?=$modelDetails->main_content?>
+    </div>
 
 
     
@@ -300,283 +271,28 @@
         Қ А Р О Р &nbsp;&nbsp; &nbsp;&nbsp;  Қ И Л И Н А Д И:
     </h4>
 
-    <table>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-                <p style="width: 300px;">
-                    <?=$modelDetails->resolution_content?>
-                </p>
-            </td>
-
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-    </table>
-
-
-    <table>
-        <tr>
-        <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>Шаҳар ҳокими</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>Имзо</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            
-            <td>
-                <?=$modelDetails->mayor_of_the_city?>
-            </td>
-
-        </tr>
-    </table>
-
-    <table>
-        <tr>
-        <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>Аслига тўғри</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-                <img src="<?= $qrImageData ?>" alt="QR Code" style="width: 150px; height: 150px;">
-            </td>
-            
-
-        </tr>
-    </table>
+    <div class="" style="width: 90%; text-align: justify; margin-left: 50px">
+        <?=$modelDetails->resolution_content?>
+    </div>
     
 
-    <table style="bottom:-30px">
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td style="font-weight: bold;">Архив мудири</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            
-            
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            
-            
-            
-            
-            
-            <td style="font-weight: bold;">
-                <?=$modelDetails->archive_head?>
+    <table style="width: 100%; text-align: center;">
+        <tr style="margin:0; padding: 0">
+            <td style="width: 33%; text-align: right">Шаҳар ҳокими</td>
+            <td style="width: 33%;">Имзо</td>
+            <td style="width: 33%; text-align: left"><?= $modelDetails->mayor_of_the_city ?></td>
+        </tr>
+        <tr style="margin:0; padding: 0">
+            <td style="width: 33%; text-align: right">Аслига тўғри</td>
+            <td style="width: 33%;" rowspan="2">
+                <img src="<?= $qrImageData ?>" alt="QR Code" style="width: 120px; height: 120px;">
             </td>
+            <td style="width: 33%;"></td>
 
+        </tr>
+        <tr style="margin:0; padding: 0">
+            <td style="width: 33%; font-weight: bold; text-align: right">Архив мудири</td>
+            <td style="width: 33%; text-align: left"><?= $modelDetails->archive_head ?></td>
         </tr>
     </table>
 
