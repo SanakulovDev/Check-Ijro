@@ -17,10 +17,10 @@ class DocumentsController extends Controller{
     public function actionView($code=null)
     {
         $model      =   Documents::find()->where(['document_code'    =>$code])->one();
-        if(!$model){
-            die("Document Not FOund");
+        $pdf_url = '';
+        if($model){
+            $pdf_url    =   Url::base(true).'/documents/pdf?id='.$model->id; 
         }
-        $pdf_url    =   Url::base(true).'/documents/pdf?id='.$model->id; 
 
         // $this->layout = false;
         // vd($pdf_url);

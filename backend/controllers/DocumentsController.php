@@ -6,14 +6,9 @@ use Yii;
 use common\models\DocumentDetails;
 use common\models\Documents;
 use common\models\DocumentsSearch;
-use kartik\mpdf\Pdf;
-use PhpParser\Node\Stmt\Return_;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use Endroid\QrCode\Builder\Builder;
-use Endroid\QrCode\Encoding\Encoding;
-use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelLow;
 /**
  * DocumentsController implements the CRUD actions for Documents model.
  */
@@ -153,8 +148,9 @@ class DocumentsController extends Controller
      */
     public function actionDelete($id)
     {
+        $this->findModelDetails($id)->delete();
         $this->findModel($id)->delete();
-
+        
         return $this->redirect(['index']);
     }
 
@@ -173,6 +169,16 @@ class DocumentsController extends Controller
 
         throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
     }
+    
+    protected function findModelDetails($id)
+    {
+        if (($model = DocumentDetails::findOne(['document_id' => $id])) !== null) {
+            return $model;
+        }
+
+        throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
+    }
+
 
     
 }
