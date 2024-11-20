@@ -96,10 +96,6 @@ AppAsset::register($this);
         }
 
 
-        .hidden-logo {
-            display: none !important;
-        }
-
         /* Search Panel */
 
         /* Search panel uchun asosiy uslub */
@@ -185,6 +181,9 @@ AppAsset::register($this);
 
             .search-btn {
                 font-size: 16px;
+            }
+            .header-logo{
+                visibility: hidden;
             }
         }
     </style>
@@ -273,6 +272,8 @@ $isHuman = Yii::$app->session->get('isHuman') || Yii::$app->request->cookies->ge
             </search>
         </div>
     </div>
+
+    
     <main role="main" class="flex-shrink-0 " style="background-color: #E5EEF9;">
         <?= $content ?>
     </main>
@@ -334,14 +335,6 @@ $isHuman = Yii::$app->session->get('isHuman') || Yii::$app->request->cookies->ge
 
                 $('#toggleButton').on('click', function() {
                     $('#sidebar').toggleClass('active');
-                    if ($('#sidebar').hasClass('active') && isMobile) {
-                        // Sidebar ochilganida logotip va matnlarni yashirish faqat mobilda
-                        $('.header-logo').addClass('hidden-logo');
-                        $('.header-logo').removeClass('flex');
-                    } else {
-                        // Sidebar yopilganida logotip va matnlarni qaytarish
-                        $('.header-logo').removeClass('hidden-logo');
-                    }
                 });
             }
 

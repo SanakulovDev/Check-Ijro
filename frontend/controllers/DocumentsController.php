@@ -19,7 +19,7 @@ class DocumentsController extends Controller{
         $model      =   Documents::find()->where(['document_code'    =>$code])->one();
         $pdf_url = '';
         if($model){
-            $pdf_url    =   Url::base(true).'/documents/pdf?id='.$model->id; 
+            $pdf_url    =   Url::base(true).'/documents/pdf?code='.$code; 
         }
 
         // $this->layout = false;
@@ -30,9 +30,9 @@ class DocumentsController extends Controller{
         ]);
     }
 
-    public function actionPdf($id)
+    public function actionPdf($code)
     {
-        $model = $this->findModel($id);
+        $model = $this->findModelByCode($code);
         $modelDetails = DocumentDetails::find()
             ->where(['document_id' => $model->id])
             ->one();
@@ -75,11 +75,11 @@ class DocumentsController extends Controller{
             body {
                 font-family: "Times New Roman", serif;
                 width: 100%;
+                font-size: 15px;
+                color: #000;
+                font-weight: 900;
             }
-            .kv-heading-1 {
-                font-size: 18px;
-                font-family: "Times New Roman", serif;
-            }',
+            ',
             'options' => ['title' => ''],
         ];
 
@@ -96,6 +96,16 @@ class DocumentsController extends Controller{
 
         throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
     }
+    
+    protected function findModelByCode($code)
+    {
+        if (($model = Documents::findOne(['document_code' => $code])) !== null) {
+            return $model;
+        }
+
+        throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
+    }
+
 
 
     public function actionVerifyRecaptcha()
