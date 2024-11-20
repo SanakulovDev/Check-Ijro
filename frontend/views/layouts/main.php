@@ -111,7 +111,7 @@ AppAsset::register($this);
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 20px;
+            padding: 0 40px;
             transition: transform 0.3s ease-in-out;
             transform: translateY(-100%); /* Yashirish */
         }
@@ -230,10 +230,10 @@ $isHuman = Yii::$app->session->get('isHuman') || Yii::$app->request->cookies->ge
         </button>
         <input type="text" placeholder="Ҳужжат рақамини киритинг" class="search-input">
         <button type="submit" class="hidden"></button>
-        <button id="closeSearch" class="close-search-btn">✖</button>
+        <button id="closeSearch" class="close-search-btn" style="font-size: 30px">&times;</button>
     </div>
 
-    <div class="relative bg-white flex flex-0 items-center w-full h-30 sm:h-20 px-4 md:px-6 z-49 shadow dark:shadow-none dark:border-b bg-card dark:bg-transparent print:hidden">
+    <div style="height: 60px" class="relative bg-white flex flex-0 items-center w-full h-40 sm:h-20 px-4 md:px-6 z-49 shadow dark:shadow-none dark:border-b bg-card dark:bg-transparent print:hidden">
         <div class="flex items-center gap-2 lg:mr-8">
             <button mat-icon-button="" class="mat-focus-indicator mat-icon-button mat-button-base" id="toggleButton">
                 <span class="mat-button-wrapper">
