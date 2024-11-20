@@ -36,7 +36,7 @@ class DocumentDetails extends \yii\db\ActiveRecord
             [['document_id', 'main_content'], 'required'],
             [['document_id'], 'default', 'value' => null],
             [['document_id'], 'integer'],
-            [['main_content', 'resolution_content'], 'string'],
+            [['main_content', 'resolution_content', 'redline'], 'string'],
             [['section_title', 'mayor_of_the_city', 'archive_head'], 'string', 'max' => 255],
             [['document_id'], 'exist', 'skipOnError' => true, 'targetClass' => Documents::class, 'targetAttribute' => ['document_id' => 'id']],
         ];
@@ -49,12 +49,13 @@ class DocumentDetails extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'document_id' => Yii::t('app', 'Document ID'),
-            'section_title' => Yii::t('app', 'Section Title'),
-            'main_content' => Yii::t('app', 'Main Content'),
-            'resolution_content' => Yii::t('app', 'Resolution Content'),
-            'mayor_of_the_city' => Yii::t('app', 'Mayor Of The City'),
-            'archive_head' => Yii::t('app', 'Archive Head'),
+            'document_id' => Yii::t('app', 'Ҳужжат ID'),
+            'section_title' => Yii::t('app', 'Бўлим Сарлавҳаси'),
+            'main_content' => Yii::t('app', 'Асосий Мазмун'),
+            'resolution_content' => Yii::t('app', 'Қарор Мазмуни'),
+            'mayor_of_the_city' => Yii::t('app', 'Шаҳар Ҳокими'),
+            'archive_head' => Yii::t('app', 'Архив Мудири'),
+            'redline' => Yii::t('app', 'Ҳужжат юқориcида ёзилувчи огоҳлантирувчи сўз(Қизил)'),
         ];
     }
 

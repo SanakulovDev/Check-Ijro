@@ -9,7 +9,12 @@ use yii\widgets\ActiveForm;
 /** @var common\models\Documents $model */
 /** @var yii\widgets\ActiveForm $form */
 ?>
-
+<style>
+    .bold-underline {
+        font-weight: bold; /* Bold */
+        text-decoration: underline; /* Underline */
+    }
+</style>
 <div class="documents-form">
 
     <?php $form = ActiveForm::begin(); ?>
@@ -46,10 +51,10 @@ use yii\widgets\ActiveForm;
         <div class="col-md-2">
             <?= $form->field($model, 'executor_name')->textInput(['maxlength' => true]) ?>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-3">
             <?= $form->field($model, 'signing_organization')->textInput(['maxlength' => true]) ?>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-3">
             <?= $form->field($model, 'validity_period_start')->widget(DatePicker::class, [
                 'pluginOptions' => [
                     'format' => 'yyyy-mm-dd',
@@ -57,13 +62,16 @@ use yii\widgets\ActiveForm;
                 ]
             ]) ?>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-3">
             <?= $form->field($model, 'validity_period_end')->widget(DatePicker::class, [
                 'pluginOptions' => [
                     'format' => 'yyyy-mm-dd',
                     'todayHighlight' => true
                 ]
             ]) ?>
+        </div>
+        <div class="col-md-8">
+            <?= $form->field($modelDetails, 'redline')->textInput(['maxlength' => true])?>
         </div>
         <div class="col-md-2">
             <?= $form->field($modelDetails, 'mayor_of_the_city')->textInput(['maxlength' => true]) ?>

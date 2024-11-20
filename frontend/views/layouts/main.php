@@ -54,7 +54,7 @@ AppAsset::register($this);
             display: block;
             margin: 15px auto;
             position: relative;
-            color: #FFF;
+            color: #3498db; /* Кўк ранг */
             left: -100px;
             box-sizing: border-box;
             animation: shadowRolling 2s linear infinite;
@@ -62,39 +62,31 @@ AppAsset::register($this);
 
         @keyframes shadowRolling {
             0% {
-                box-shadow: 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);
+                box-shadow: 0px 0 rgba(52, 152, 219, 0), 0px 0 rgba(52, 152, 219, 0), 0px 0 rgba(52, 152, 219, 0), 0px 0 rgba(52, 152, 219, 0);
             }
-
             12% {
-                box-shadow: 100px 0 white, 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);
+                box-shadow: 100px 0 #3498db, 0px 0 rgba(52, 152, 219, 0), 0px 0 rgba(52, 152, 219, 0), 0px 0 rgba(52, 152, 219, 0);
             }
-
             25% {
-                box-shadow: 110px 0 white, 100px 0 white, 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);
+                box-shadow: 110px 0 #3498db, 100px 0 #3498db, 0px 0 rgba(52, 152, 219, 0), 0px 0 rgba(52, 152, 219, 0);
             }
-
             36% {
-                box-shadow: 120px 0 white, 110px 0 white, 100px 0 white, 0px 0 rgba(255, 255, 255, 0);
+                box-shadow: 120px 0 #3498db, 110px 0 #3498db, 100px 0 #3498db, 0px 0 rgba(52, 152, 219, 0);
             }
-
             50% {
-                box-shadow: 130px 0 white, 120px 0 white, 110px 0 white, 100px 0 white;
+                box-shadow: 130px 0 #3498db, 120px 0 #3498db, 110px 0 #3498db, 100px 0 #3498db;
             }
-
             62% {
-                box-shadow: 200px 0 rgba(255, 255, 255, 0), 130px 0 white, 120px 0 white, 110px 0 white;
+                box-shadow: 200px 0 rgba(52, 152, 219, 0), 130px 0 #3498db, 120px 0 #3498db, 110px 0 #3498db;
             }
-
             75% {
-                box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 130px 0 white, 120px 0 white;
+                box-shadow: 200px 0 rgba(52, 152, 219, 0), 200px 0 rgba(52, 152, 219, 0), 130px 0 #3498db, 120px 0 #3498db;
             }
-
             87% {
-                box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 130px 0 white;
+                box-shadow: 200px 0 rgba(52, 152, 219, 0), 200px 0 rgba(52, 152, 219, 0), 200px 0 rgba(52, 152, 219, 0), 130px 0 #3498db;
             }
-
             100% {
-                box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0);
+                box-shadow: 200px 0 rgba(52, 152, 219, 0), 200px 0 rgba(52, 152, 219, 0), 200px 0 rgba(52, 152, 219, 0), 200px 0 rgba(52, 152, 219, 0);
             }
         }
 

@@ -52,18 +52,19 @@ class Documents extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'document_code' => Yii::t('app', 'Document Code'),
-            'document_date' => Yii::t('app', 'Document Date'),
-            'resolution_date' => Yii::t('app', 'Resolution Date'),
-            'resolution_number' => Yii::t('app', 'Resolution Number'),
-            'issuer_name' => Yii::t('app', 'Issuer Name'),
-            'executor_name' => Yii::t('app', 'Executor Name'),
-            'signing_organization' => Yii::t('app', 'Signing Organization'),
-            'validity_period_start' => Yii::t('app', 'Validity Period Start'),
-            'validity_period_end' => Yii::t('app', 'Validity Period End'),
-            'created_at' => Yii::t('app', 'Created At'),
-            'updated_at' => Yii::t('app', 'Updated At'),
-            'file_path' => Yii::t('app', 'File Path'),
+            'document_code' => Yii::t('app', 'Ҳужжат Коди'),
+            'document_date' => Yii::t('app', 'Ҳужжат Санаси'),
+            'document_number' => Yii::t('app', 'Ҳужжат Рақами'),
+            'resolution_date' => Yii::t('app', 'Қарор Санаси'),
+            'resolution_number' => Yii::t('app', 'Қарор Рақами'),
+            'issuer_name' => Yii::t('app', 'Чиқарувчи Номи'),
+            'executor_name' => Yii::t('app', 'Ижрочи Номи'),
+            'signing_organization' => Yii::t('app', 'Имзолаган Ташкилот'),
+            'validity_period_start' => Yii::t('app', 'Амал қилиш Муддати Бошланиши'),
+            'validity_period_end' => Yii::t('app', 'Амал қилиш Муддати Тугаши'),
+            'created_at' => Yii::t('app', 'Яратилган Вақти'),
+            'updated_at' => Yii::t('app', 'Янгиланган Вақти'),
+            'file_path' => Yii::t('app', 'Файл Манзили'),
         ];
     }
 
