@@ -15,7 +15,7 @@ $uzbek_months = [
     7 => "июль",
     8 => "август",
     9 => "сентябрь",
-    10 => "октябрь",
+    10 => "октябр",
     11 => "ноябрь",
     12 => "декабрь"
 ];
@@ -72,7 +72,7 @@ $uzbek_months = [
                     $day = date("d", $timestamp);
                     
                     // Format the date
-                    $formatted_date = $year . "-йил " . $day . "-" . $uzbek_months[$month].'даги';
+                    $formatted_date = $year . " йил " . $day . " " . $uzbek_months[$month].'даги';
                     
                     echo $formatted_date;
                 ?>
