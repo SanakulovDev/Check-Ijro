@@ -29,16 +29,18 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'document_code',
+            'document_number',
             'document_date',
-            'resolution_date',
-            'resolution_number',
-            //'issuer_name',
-            //'executor_name',
-            //'signing_organization',
-            //'validity_period_start',
-            //'validity_period_end',
-            //'created_at',
-            //'updated_at',
+            [
+                'attribute' => '',
+                'label' =>'Hujjat Manzili',
+                'value' => function($model){
+                    return Html::a('Hujjat', 'https://check-ijro-uz.com/d/'.$model->document_code. ['class'=>'btn btn-primary']);
+                }
+            ],
+            
+            'created_at',
+            'updated_at',
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Documents $model, $key, $index, $column) {
