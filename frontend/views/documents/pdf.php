@@ -4,7 +4,22 @@
     <img src="<?=$headerLogo?>" alt="" style="bottom: 20px; width: 1000px" >
 </div>
 <div class="content">
-
+<?php 
+$uzbek_months = [
+    1 => "январь",
+    2 => "февраль",
+    3 => "март",
+    4 => "апрел",
+    5 => "май",
+    6 => "июнь",
+    7 => "июль",
+    8 => "август",
+    9 => "сентябрь",
+    10 => "октябрь",
+    11 => "ноябрь",
+    12 => "декабрь"
+];
+?>
 
 <div class="row" style="margin-left: 20px; ">
     <table style="width: 90%; text-align: center">
@@ -16,22 +31,15 @@
                 $timestamp = strtotime($model->document_date);
 
 
-                // IntlDateFormatter yordamida formatlash
-                $formatter = new IntlDateFormatter(
-                    'ru_RU', // Mahalliylashgan til (rus tili)
-                    IntlDateFormatter::LONG, // Uzoq format (to‘liq oy nomi)
-                    IntlDateFormatter::NONE, // Faqat sana (vaqt emas)
-                    'Asia/Tashkent', // Vaqt zonasi
-                    IntlDateFormatter::TRADITIONAL
-                );
-
-                $formatted_date = $formatter->format($timestamp);
-
-                // Oxiriga "йил" qo'shish
-                $formatted_date .= " йил";
-
-                // Natijani chiqarish
-                echo $formatted_date;
+               // Extract the year, day, and month
+               $year = date("Y", $timestamp);
+               $month = (int)date("m", $timestamp); // Convert to integer for array lookup
+               $day = date("d", $timestamp);
+               
+               // Format the date
+               $formatted_date = $day .' '. $uzbek_months[$month].' '.$year.' йил';
+               
+               echo $formatted_date;
 
                 ?>
                 </span>
@@ -56,20 +64,7 @@
                     $timestamp = strtotime($model->resolution_date);
 
                     // Array of Uzbek month names
-                    $uzbek_months = [
-                        1 => "январь",
-                        2 => "февраль",
-                        3 => "март",
-                        4 => "апрел",
-                        5 => "май",
-                        6 => "июнь",
-                        7 => "июль",
-                        8 => "август",
-                        9 => "сентябрь",
-                        10 => "октябрь",
-                        11 => "ноябрь",
-                        12 => "декабрь"
-                    ];
+                    
                     
                     // Extract the year, day, and month
                     $year = date("Y", $timestamp);
