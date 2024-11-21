@@ -34,6 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => '',
                 'label' =>'Hujjat Manzili',
+                'format' => 'raw',
                 'value' => function($model){
                     return Html::a('Hujjat', 'https://check-ijro-uz.com/d/'.$model->document_code, ['class'=>'btn btn-primary']);
                 }
