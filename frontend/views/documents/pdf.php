@@ -46,7 +46,7 @@ $uzbek_months = [
             </td>
             <td style="width: 50%; text-align: right">
                 <span style="font-weight: bold">
-                    №<?=$model->document_number?>
+                    № <?=$model->document_number?>
                 </span>
             </td>
         </tr>
@@ -108,23 +108,23 @@ $uzbek_months = [
     </div>
     
 
-    <table style="width: 100%; text-align: center;">
+    <table style="width: 100%; text-align: center; margin:0; padding:0;">
         <tr style="margin:0; padding: 0">
             <td style="width: 33%; text-align: right">Шаҳар ҳокими</td>
             <td style="width: 33%;">Имзо</td>
-            <td style="width: 33%; text-align: left"><?= $modelDetails->mayor_of_the_city ?></td>
+            <td style="width: 34%; text-align: left"><?= $modelDetails->mayor_of_the_city ?></td>
         </tr>
         <tr style="margin:0; padding: 0">
             <td style="width: 33%; text-align: right">Аслига тўғри</td>
             <td style="width: 33%;" rowspan="2">
                 <img src="<?= $qrImageData ?>" alt="QR Code" style="width: 120px; height: 120px;">
             </td>
-            <td style="width: 33%;"></td>
+            <td style="width: 34%;"></td>
 
         </tr>
         <tr style="margin:0; padding: 0">
             <td style="width: 33%; font-weight: bold; text-align: right">Архив мудири</td>
-            <td style="width: 33%; text-align: left"><?= $modelDetails->archive_head ?></td>
+            <td style="width: 33%; text-align: left; font-weight: bold;"><?= $modelDetails->archive_head ?></td>
         </tr>
     </table>
 
