@@ -19,13 +19,14 @@ $uzbek_months = [
     11 => "ноябрь",
     12 => "декабрь"
 ];
+$fontSize = 'font-size: 15px';
 ?>
 
 <div class="row" style="margin-left: 20px; ">
     <table style="width: 90%; text-align: center">
         <tr>
             <td style="width: 50%;">
-                <span style="margin-left: 200px; font-weight: bold">
+                <span style="margin-left: 200px; font-weight: bold; <?=$fontSize?>">
 
                 <?php
                 $timestamp = strtotime($model->document_date);
@@ -44,8 +45,8 @@ $uzbek_months = [
                 ?>
                 </span>
             </td>
-            <td style="width: 50%; text-align: right">
-                <span style="font-weight: bold">
+            <td style="width: 50%; text-align: right;">
+                <span style="font-weight: bold; <?=$fontSize?>">
                     № <?=$model->document_number?>
                 </span>
             </td>
@@ -58,7 +59,7 @@ $uzbek_months = [
     <table style="width: 90%; text-align: center">
         <tr>
             <td style="width: 50%;">
-                <span style="margin-left: 200px; ">
+                <span style="margin-left: 200px; <?=$fontSize?>">
 
                 <?php
                     $timestamp = strtotime($model->resolution_date);
@@ -79,7 +80,7 @@ $uzbek_months = [
                 </span>
             </td>
             <td style="width: 50%; text-align: right">
-                <span style="margin-left: 200px; ">
+                <span style="margin-left: 200px; <?=$fontSize?>">
                     №<?=$model->resolution_number?>-сонли қароридан
                 </span>
             </td>
@@ -91,7 +92,7 @@ $uzbek_months = [
     <h4 style="text-align:center; font-weight: bold; text-transform: uppercase;">
         Архив кўчирмаси
     </h4>
-    <div class="" style="width: 90%; text-align: justify; margin-left: 50px">
+    <div class="" style="width: 90%; text-align: justify; margin-left: 50px; <?=$fontSize?>">
         <?=$modelDetails->main_content?>
     </div>
 
@@ -103,12 +104,12 @@ $uzbek_months = [
         Қ А Р О Р &nbsp;&nbsp; &nbsp;&nbsp;  Қ И Л И Н А Д И:
     </h4>
 
-    <div class="" style="width: 90%; text-align: justify; margin-left: 50px">
+    <div class="" style="width: 90%; text-align: justify; margin-left: 50px; <?=$fontSize?>">
         <?=$modelDetails->resolution_content?>
     </div>
     
 
-    <table style="width: 100%; text-align: center; margin:0; padding:0;">
+    <table style="width: 100%; text-align: center; margin:0; padding:0; <?=$fontSize?>">
         <tr style="margin:0; padding: 0">
             <td style="width: 33%; text-align: right">Шаҳар ҳокими</td>
             <td style="width: 33%;">Имзо</td>
