@@ -38,7 +38,7 @@ $year = date("Y", $timestamp);
 $month = (int)date("m", $timestamp);
 $day = date("d", $timestamp);
 
-$resolution_date = $year . "-йил " . $day . "-" . $uzbek_months[$month] . 'даги';
+$resolution_date = $year . " йил " . $day . " " . $uzbek_months[$month] . 'даги';
 
 $document_date = date("d", strtotime($model->document_date)) . ' ' . $uzbek_months[(int)date("m", strtotime($model->document_date))] . ' ' . date("Y", strtotime($model->document_date));
 $validity_period_start = date("d", strtotime($model->validity_period_start)) . ' ' . $uzbek_months2[(int)date("m", strtotime($model->validity_period_start))] . ' ' . date("Y", strtotime($model->validity_period_start));
@@ -53,7 +53,7 @@ $opacity = 'opacity: 0.89';
 
                 <div class="flex flex-col items-start p-4 border-b ng-tns-c103-1"><!---->
                     <div class="mt-3 text-2xl font-semibold"><?=$model->document_code?></div>
-                    <div class="text-secondary"><?=$resolution_date?> <?=$model->resolution_number?>-сонли</div>
+                    <div class="text-secondary"><?=$resolution_date?> <?=$model->resolution_number?> сонли</div>
                     <div class="text-sm"><?=$document_date?></div>
                     <div class="mt-6 flex items-center leading-5 text-md  ng-star-inserted" style="<?=$opacity?>" ><mat-icon role="img" class="mat-icon notranslate icon-size-8 text-secondary mat-icon-no-color" aria-hidden="true" data-mat-icon-type="svg" data-mat-icon-name="mail_send" data-mat-icon-namespace="iconsmind"><svg width="100%" height="100%" viewBox="0 0 36 32" x="952" y="2688" fit="" preserveAspectRatio="xMidYMid meet" focusable="false">
                                 <path d="M8 12.267h-7.467c-0.294 0-0.533-0.239-0.533-0.533s0.239-0.533 0.533-0.533h7.467c0.293 0 0.533 0.239 0.533 0.533s-0.24 0.533-0.533 0.533z"></path>
